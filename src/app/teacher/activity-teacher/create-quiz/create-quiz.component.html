@@ -1,0 +1,69 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Make a REAL TIME ACTIVITY!</h4>
+            <p class="card-category"> The activities in real time are created in order to be able to measure what has
+              been learned in class according to the topic. In addition, sending notifications to all students when
+              activating the activity.
+            </p>
+            <p class="card-category">Only you need to fill out the form. Let's start! </p>
+          </div>
+          <div class="card-quiz"> 
+            <app-question-of-topic [listaPreguntaOut]="listaPreguntaOut"></app-question-of-topic>
+            <br>
+            <mat-accordion class="example-headers-align">
+              <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    What is the topic?
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                
+                <app-search-topic (childEvent)="recepcionTema($event)" #searchTopic></app-search-topic>
+
+                <mat-action-row>
+                  <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    What is the question?
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                  <input  [(ngModel)] = "question" #box matInput placeholder="Enter your question about the topic in this text-box"
+                    (keyup.enter)="onQuestion(box.value)" (blur)="onQuestion(box.value)">
+                </mat-form-field>
+                <mat-action-row>
+                  <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                  <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+              </mat-expansion-panel>
+              <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    What are the correct and incorrect answer?
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-answer-of-question-teacher (childEvent)="recepcionPreguntas($event)" #answerOfQuestion>
+                </app-answer-of-question-teacher>
+                <mat-action-row>
+                  <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                  <button mat-button color="primary"
+                    (click)="answerOfQuestion.confirmarPreguntas(); searchTopic.confirmarTema()">ADD QUESTION AND
+                    ANSWER</button>
+                </mat-action-row>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <button type="button" class="btn btn-primary pull-left" (click)="createActivity()">CREATE ACTIVITY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">My Activies!</h4>
+          
+            </div>
+            <div class="card-body">
+              
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      Number
+                    </th>
+                    <th>
+                      Code
+                    </th>
+                    <th>
+                      Type Activy
+                    </th>
+                    
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let activity of listActivities ; let i = index">
+                        <td class="text-primary">
+                            {{i+1}}
+                          </td>
+                         <td class="text-primary">
+                           {{activity.codigoAleatorio}}
+                         </td>
+                         
+                         <td class="text-primary">
+                            {{activity.tipoActividad.valor}}
+                          </td>
+                          <td>
+                          <button mat-button (click)= "playActivity(activity)" class="btn btn-primary btn-link btn-sm">
+                              PLAY
+                            </button>
+                          </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

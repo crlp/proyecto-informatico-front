@@ -1,0 +1,51 @@
+<div class="fondobody" >
+  <div class="wrapper " >
+  <div class="main-panel-login">
+    <div class="content">
+      <div class="container-fluid">
+          <div class="col-md-4">
+            <div class="card card-profile">
+              <div class="card-body">
+                <h4 class="card-title" style="margin-top: 32px; font-weight: 700">Plataforma digital para el aprendizaje del idioma inglés</h4>
+               
+                <div class="card-body">
+                  <div *ngIf="procesando===2" class="col-md-12 alert alert-danger text-login-center">
+                    <label class="col-md-12 control-label mensaje-error" for="mensajeError">{{mensajeError}}</label>
+                  </div>
+                  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group" style="text-align: left;">
+                          <label class="bmd-label-floating">Usuario</label>
+                          <input pattern="[a-zA-Z ]*" maxlength="45" name="username" id="username" tabindex="1" class="form-control"
+                            ngModel>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group" style="text-align: left;">
+                          <label class="bmd-label-floating">
+                            Contraseña</label>
+                          <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                            ngModel>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <button style="background-color:blueviolet;" type="submit" tabindex="4"
+                          class="form-control btn btn-general">Ingresar</button>
+                      </div>
+                    </div>
+                    <div class="ssclearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </div>
+</div>

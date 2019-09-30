@@ -1,0 +1,15 @@
+<div class="row" style="width:100%; margin-left: 0 !important;"> 
+  <div class="col-4" *ngFor="let item of listaPreguntaOut; let i = index" style="padding-bottom:16px">
+    <mat-card class="example-card">
+      <mat-card-content>
+        <h4>Question {{i + 1}}</h4>
+        {{ item.pregunta }}
+        <h6>(Temporarily saved item)</h6>
+      </mat-card-content>
+      <mat-card-actions style="text-align: right; padding: 0px;">
+        <button mat-button (click)="seeDetail(item)"><i class="material-icons">info</i></button>
+        <button mat-button (click)="deleteQuestion(item)"><i class="material-icons">delete</i></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

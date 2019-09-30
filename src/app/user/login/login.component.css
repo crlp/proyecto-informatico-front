@@ -1,0 +1,16 @@
+.mensaje-error{
+    color: azure;
+    font-weight: bold
+}
+
+.fondobody{
+    background-image: url('../../../assets/img/fondologin.png') !important;
+        /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

@@ -1,0 +1,46 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.mat-expansion-panel {
+  background-color: #f2f2f3;
+}
+mat-panel-title {
+  color: #000000;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+mat-hint {
+  color: #00008b;
+}
+mat-form-field {
+  margin-right: 12px;
+  color: blueviolet;
+}
+
+.card-quiz{
+  padding: 0.9375rem 20px;
+  position: relative;
+}
+
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+  background-color: blueviolet !important;
+  color: blueviolet !important;
+}
+
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+  background-color: blueviolet !important;
+  color: blueviolet !important;
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: blueviolet;
+}
+
+::ng-deep .mat-form-field{
+  width:100% !important;
+}

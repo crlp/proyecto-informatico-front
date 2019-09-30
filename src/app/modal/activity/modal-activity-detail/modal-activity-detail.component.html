@@ -1,0 +1,19 @@
+
+<mat-list>
+  
+  <h2 mat-subheader>Question</h2>
+  
+  <h6 style=" padding-left: 16px;">{{question.pregunta}}</h6>
+  
+  <h2 mat-subheader>Answer</h2>
+  <mat-list-item *ngFor="let answer of question.listaRespuestas">
+    <mat-icon mat-list-icon>question_answer</mat-icon>
+    <h4 mat-line>{{answer.respuesta}}</h4>
+  </mat-list-item>
+</mat-list>
+
+
+<mat-action-row>
+    <button mat-button color="warn">Save</button>
+    <button mat-button color="primary">Close</button>
+  </mat-action-row>

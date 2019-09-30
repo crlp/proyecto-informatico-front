@@ -1,0 +1,45 @@
+<div class="wrapper ">
+  <div class="main-panel-login">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card card-profile">
+              <div class="card-avatar">
+                <img class="img" src="../../assets/img/questions_.png" />
+              </div>
+              <div class="card-body">
+                <h3 class="card-category text-gray"><strong> Welcome to the activity in real time!</strong> </h3>
+                <h3 class="card-title">Session Code <div class="session-code">{{activityReal.codigoActividad}}</div>
+                </h3>
+                <div class="card-body">
+                  <div class="form-group">
+                    <div class="">
+                      <button style="background-color: #0e6aa7;" type="submit" tabindex="4"
+                        class="form-control btn btn-general" (click) = "comenzarJuego()">Start Activity</button>
+                    </div>
+                  </div>
+                  <div class="ssclearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card card-profile">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4" *ngFor = "let participant of listParticipant">
+                    <div class="alert alert-info" >
+                        <span class="name-participant"> {{participant.nombres}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

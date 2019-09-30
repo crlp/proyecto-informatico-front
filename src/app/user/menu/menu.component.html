@@ -1,0 +1,88 @@
+
+<div class="wrapper " >
+  <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+      <div class="logo">
+          <a href="/option" class="simple-text logo-normal">
+          Learning Pe
+          </a>
+      </div>
+      <div class="sidebar-wrapper">
+          <ul class="nav">
+              <li class="nav-item" >
+              <a class="nav-link" *ngIf="showAlumno" [routerLink]="['/menu/',{ outlets: { menulateral: ['dashboard'] } }]" >
+                  <i class="material-icons">home</i>
+                  <p>Home</p>
+              </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" *ngIf="showProfesor"  [routerLink]="['/menu/',{ outlets: { menulateral: ['class'] } }]">
+                    <i class="material-icons">class</i>
+                    <p>Make your class!</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+              <a class="nav-link" *ngIf="showAlumno"  [routerLink]="['/menu/',{ outlets: { menulateral: ['activity-list'] } }]">
+                  <i class="material-icons">local_activity</i>
+                  <p>Activities</p>
+              </a>
+              </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" *ngIf="showProfesor"  [routerLink]="['/menu/',{ outlets: { menulateral: ['create-quiz'] } }]">
+                    <i class="material-icons">local_activity</i>
+                    <p>Make a real time exam!</p>
+                </a>
+            </li>
+              <li class="nav-item ">
+              <a class="nav-link">
+                  <i class="material-icons">poll</i>
+                  <p>Reports</p>
+              </a>
+              </li>
+              <li class="nav-item ">
+              <a class="nav-link" [routerLink]="['/menu/',{ outlets: { menulateral: ['home'] } }]" routerLinkActive="active">
+                  <i class="material-icons">person</i>
+                  <p>User Profile</p>
+              </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+  <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+          <div class="container-fluid">
+              <div class="navbar-wrapper">
+              <a class="navbar-brand" href="/option">Usuarios</a>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="navbar-toggler-icon icon-bar"></span>
+              <span class="navbar-toggler-icon icon-bar"></span>
+              <span class="navbar-toggler-icon icon-bar"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end">
+              <ul class="navbar-nav">
+                  <li class="nav-item" >
+                      <a class="nav-link" href="#"  (click)="cerrar($event)">
+                          <i class="material-icons">person</i>
+                          <p class="d-lg-none d-md-block" >
+                          Account
+                          </p>
+                      </a>
+                  </li>
+              </ul>
+              </div>
+          </div>
+      </nav>
+      <div class="content">
+          <div class="container-fluid">
+              <!--<app-home></app-home>-->
+              <router-outlet name="menulateral">
+               
+              </router-outlet>
+          </div>
+      </div>
+  </div>
+</div>

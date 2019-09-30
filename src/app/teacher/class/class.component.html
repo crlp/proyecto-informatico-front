@@ -1,0 +1,55 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Make your class!</h4>
+            <p class="card-category"> In this section you can make your class. You only need to selectd the date.</p>
+          </div>
+          <div class="card-body">
+            
+              <app-search-topic (childEvent)="recepcionTema($event)" #searchTopic></app-search-topic>
+              
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Nro Activity
+                  </th>
+                  <th>
+                    Code Session
+                  </th>
+                  <th>
+                    Teacher
+                  </th>
+                  <th>
+                    Play
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let activity of activities ; let i = index">
+                    <td>
+                       #{{i + 1}}
+                    </td>
+                    <td>
+                       <strong>{{activity.codigoAleatorio}} </strong>
+                    </td>
+                    <td>
+                        {{activity.profesor.nombres + " " + activity.profesor.apellidos}}
+                    </td>
+                    <td class="text-primary">
+                        <button mat-button (click)= "showOwnActivities(activity)" class="btn btn-primary btn-link btn-sm">
+                            <i class="material-icons">play_circle_filled</i>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

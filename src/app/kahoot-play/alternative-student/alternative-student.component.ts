@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/modelo/question';
 import { Answer } from 'src/modelo/answer';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ActivityRealService } from 'src/services/firebase/activity-real.service';
+import { ActivityRealService } from 'src/services/activity-real.service';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Usuario } from 'src/modelo/usuario';
 import { interval } from 'rxjs';
@@ -74,8 +74,8 @@ export class AlternativeStudentComponent implements OnInit {
     for (let index = 0; index < 4; index++) {
       try{
         var answer = this.questionSelected.listaRespuestas[index];
-        if(answer.respuesta != ''){
-         this.preguntas.push(answer);
+        if(answer.respuesta){
+          this.preguntas.push(answer);
         }
       }
       catch (ex) {}

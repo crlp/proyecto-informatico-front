@@ -1,9 +1,10 @@
 import { Component, OnInit,  Inject, Injectable } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material';
-import { ActivityService } from 'src/services/activity/activity.service';
+import { ActivityService } from 'src/services/activity.service';
 import { Activity } from 'src/modelo/activity';
 import { HttpResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Metodo } from 'src/app/util/metodo';
 
 
 @Component({
@@ -33,11 +34,11 @@ export class ModalConfirmationComponent implements OnInit {
     this.spinner.show();
     this.activityService.registrarActividad(this.activity).subscribe(datos =>{
       if (datos instanceof HttpResponse) {
-        console.log(datos.body);
-        this.spinner.hide();
-      }else {        
-        this.spinner.hide();
+        Metodo.DIALOG_MESSAGE_SUCCESS("Your activity will appear in your classes!")
+      }else {
+        Metodo.DIALOG_MESSAGE_ERROR("Possible error!")
       }
+      this.spinner.hide();
     })
   }
 }

@@ -13,25 +13,25 @@ export class ActivityService {
 
   listActivies(): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE + '/user/' + localStorage.getItem(ParametroUtil.CODE_USER_STORAGE) + "/activity";
-    const req = new HttpRequest(ParametroUtil.GET, url, ParametroUtil.INIT);
+    const req = new HttpRequest(ParametroUtil.GET, url, Metodo.INIT);
     return this.http.request(req);
   }
 
   listaActivitiesPropias(codigoTema): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE + '/user/' + localStorage.getItem("codigo") +"/activity/topic/" + codigoTema
-    const req = new HttpRequest(ParametroUtil.GET, url ,ParametroUtil.INIT);
+    const req = new HttpRequest(ParametroUtil.GET, url ,Metodo.INIT);
     return this.http.request(req);
   }
 
   listaActivitiesPropiasEstudiante(codigoAula): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE + "/activity/room/" + codigoAula
-    const req = new HttpRequest(ParametroUtil.GET, url ,ParametroUtil.INIT);
+    const req = new HttpRequest(ParametroUtil.GET, url ,Metodo.INIT);
     return this.http.request(req);
   }
 
   listarParametros(codigo): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE +'/values/'+codigo;
-    const req = new HttpRequest(ParametroUtil.GET,  url, ParametroUtil.INIT);
+    const req = new HttpRequest(ParametroUtil.GET,  url, Metodo.INIT);
     return this.http.request(req);
   }
 

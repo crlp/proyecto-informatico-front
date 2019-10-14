@@ -1,20 +1,9 @@
-<div class="content">
+<div class="contents">
     <div class="container-fluid">
-      <div class="row">
-       <div  *ngFor = "let respuesta of preguntas  ; let i = index" class="col-lg-6 col-md-6 col-sm-6" style="padding: 1px !important;">
-          <div (click) ="respuestaSeleccionada(respuesta, i)" class="card card-stats" style="margin-bottom: 12px; margin-top: 12px;">
-            <div class="card-header card-header-danger card-header-icon">
-              <div class="card-icon">
-                <i class="material-icons">filter_{{i+1}}</i>
-              </div>
-            </div>
-  
+      <div class="row ">
+       <div  *ngFor = "let respuesta of preguntas  ; let i = index" class="col-md-6 quarter" >
+          <div (click) ="respuestaSeleccionada(respuesta, i)">
             <div class= "pregunta-text">{{respuesta.respuesta}}</div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">local_offer</i> Touch this card if you believe that is correct
-              </div>
-            </div>
           </div>
         </div>
       </div>

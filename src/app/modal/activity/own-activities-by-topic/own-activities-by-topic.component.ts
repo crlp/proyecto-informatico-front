@@ -2,15 +2,15 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material';
 import { Topic } from 'src/modelo/topic';
 import { Usuario } from 'src/modelo/usuario';
-import { ActivityService } from 'src/services/activity/activity.service';
+import { ActivityService } from 'src/services/activity.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpResponse } from '@angular/common/http';
 import { Activity } from 'src/modelo/activity';
 import { Router, NavigationExtras } from '@angular/router';
-import { ActivityRealService } from 'src/services/firebase/activity-real.service';
+import { ActivityRealService } from 'src/services/activity-real.service';
 import { ActivityReal } from 'src/modelo/firebase/activity-real';
 import { Parametro } from 'src/modelo/param';
-import { UsuarioService } from 'src/services/user/usuario.service';
+import { UsuarioService } from 'src/services/usuario.service';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { FormControl } from '@angular/forms';
 

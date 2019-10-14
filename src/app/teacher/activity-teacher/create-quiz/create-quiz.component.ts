@@ -10,6 +10,8 @@ import { Answer } from 'src/modelo/answer';
 import { Topic } from 'src/modelo/topic';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
+import { ParametroUtil } from 'src/app/util/parametroUtil';
+import { Metodo } from 'src/app/util/metodo';
 
 @Component({
   selector: 'app-create-quiz',
@@ -18,27 +20,35 @@ import 'sweetalert2/src/sweetalert2.scss'
 })
 export class CreateQuizComponent{
   
+  listaAnswer       : Answer[]  = [];
+  listaPreguntaOut  : Question[]= [];
+  profesor          : Usuario   = null;
+  tipoActividad     : Parametro = null;
+  estado            : Parametro = null;
+  questionOriginal  : Question  = null;
+  usuario           : Usuario   = null
+  activity          : Activity  = null;
 
-  listaPreguntaOut = new Array<Question>();
-  usuario       = JSON.parse(localStorage.getItem("usuario"));
-  activity      = new Activity();
-  
-  step          = 0;
-  question      : string ;
-  listaAnswer   : Answer[]
-  profesor      : Usuario;
-  tipoActividad : Parametro;
-  estado        : Parametro;
-  questionOriginal : Question;
+  step              = 0;
+  question          = '' ;
 
-  constructor(private  dialog:  MatDialog) {} 
+  constructor( private  dialog:  MatDialog ) {
+    this.activity = new Activity();
+    this.usuario  = JSON.parse(localStorage.getItem(ParametroUtil.USER_STORAGE));
+  } 
 
-  setStep(index: number) { this.step = index; }
-  nextStep() { this.step++; }
-  prevStep() { this.step--; }
+  setStep( index: number ) { 
+    this.step = index; 
+  }
+
+  nextStep() { 
+    this.step++; 
+  }
+  prevStep() { 
+    this.step--;
+  }
 
   confirmation(){
-
     
     //creando objeto profesor
     this.profesor =  new Usuario();
@@ -60,11 +70,11 @@ export class CreateQuizComponent{
     this.activity.estado = this.estado;
   }
 
-  onQuestion(value: string) { 
+  onQuestion( value: string ) { 
     this.question = value; 
   }
 
-  recepcionPreguntas (listaAnswer: Answer[]){
+  recepcionPreguntas ( listaAnswer: Answer[] ){
     this.questionOriginal = new Question();
     this.questionOriginal.pregunta = this.question;
     this.questionOriginal.listaRespuestas = listaAnswer;
@@ -84,35 +94,30 @@ export class CreateQuizComponent{
     this.question = '';
   }
 
-  recepcionTema (topic : Topic){
+  recepcionTema ( topic : Topic){
     this.activity.tema = topic;
     this.confirmation();
   }
 
   clearObject () {
     this.activity         = new Activity();
-    this.listaPreguntaOut = new Array<Question>();
+    this.listaPreguntaOut = [];
   }
 
   createActivity(){
+    
     this.activity.listaPregunta = this.listaPreguntaOut;
+    this.activity.estado = this.estado
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.activity;
     const dialogRef =  this.dialog.open(ModalConfirmationComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.clearObject ();
       this.clearInputs();
       this.setStep(0);
-
-      swal.fire(
-        'Good job!',
-        'Your activity will appear in your classes!',
-        'success'
-      )
-
     });
   }
 

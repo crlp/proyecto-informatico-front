@@ -3,10 +3,11 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { Activity } from 'src/modelo/activity';
 import { Router } from '@angular/router';
-import { ActivityService } from 'src/services/activity/activity.service';
+import { ActivityService } from 'src/services/activity.service';
 import { HttpResponse } from '@angular/common/http';
 import { Parametro } from 'src/modelo/param';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
+import { Metodo } from 'src/app/util/metodo';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,13 +15,14 @@ import { ParametroUtil } from 'src/app/util/parametroUtil';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  listaActivities: Array<Activity> = [];
-  listaActivityPend: Array<Activity> = [];
-  listaActivityCancel: Array<Activity> = [];
-  listaActivityFinished: Array<Activity> = [];
-  listaEstado: Parametro[]=[];
 
-  constructor(private router: Router,private activityService: ActivityService) { }
+  listaActivities       : Activity[]  = [];
+  listaActivityPend     : Activity[]  = [];
+  listaActivityCancel   : Activity[]  = [];
+  listaActivityFinished : Activity[]  = [];
+  listaEstado           : Parametro[] = [];
+
+  constructor(private activityService: ActivityService) { }
 
   ngOnInit() {
     this.listadoParametros(ParametroUtil.LST_ESTADO_ACTIVIDAD);
@@ -30,9 +32,7 @@ export class DashboardComponent implements OnInit {
   listActivities() {
         this.activityService.listActivies().subscribe(datos =>{
           if (datos instanceof HttpResponse) {
-            console.log(datos.body);
             this.listaActivities=JSON.parse(JSON.stringify(datos.body));
-            console.log(this.listaActivities);    
             this.activityByStatus();        
           }
 
@@ -42,26 +42,27 @@ export class DashboardComponent implements OnInit {
   activityByStatus() {
     this.listaActivities.forEach(activity => {
       this.listaEstado.forEach(estado => {
-        if(activity.estado.codigo == estado.codigo){
-          if(estado.valor == "PENDIENTE"){
-            this.listaActivityPend.push(activity);
-          }else  if(estado.valor == "FINALIZADO"){
-            this.listaActivityFinished.push(activity);
-          }else  if(estado.valor == "CANCELADO"){
-            this.listaActivityCancel.push(activity);
+        if( activity.estado.codigo == estado.codigo){
+          switch(estado.valor){
+            case ParametroUtil.STATUS_PEND:
+              this.listaActivityPend.push(activity);
+              break;
+            case ParametroUtil.STATUS_FINI:
+              this.listaActivityFinished.push(activity);
+              break;
+            case ParametroUtil.STATUS_CANC:
+              this.listaActivityCancel.push(activity);
+              break; 
           }
         }
       });
     });
   }
 
-  listadoParametros(codigo){
-
+  listadoParametros(codigo : string){
     this.activityService.listarParametros(codigo).subscribe(datos =>{
       if (datos instanceof HttpResponse) {
-        console.log(datos.body);
-        this.listaEstado =JSON.parse(JSON.stringify(datos.body));
-        console.log(this.listaEstado)
+        this.listaEstado = Metodo.JSON_TO_OBJECT(datos.body);
       }
     })
   }

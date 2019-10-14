@@ -2,7 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { Topic } from 'src/modelo/topic';
-import { TopicService } from 'src/services/topic/topic.service';
+import { TopicService } from 'src/services/topic.service';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({
@@ -12,14 +12,18 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class SearchTopicComponent implements OnInit {
 
-  constructor(private topicService: TopicService) { }
-  topicSelected = new Topic();
-  listaTemasArray: Array<Topic> = [];
-  myControl: FormControl = new FormControl();
-  filteredOptions: Observable<Array<Topic>>;
+  topicSelected   : Topic         = null;
+  listaTemasArray : Array<Topic>  = [];
+  myControl       : FormControl   = new FormControl();
+  filteredOptions : Observable< Array< Topic > >;
 
 
-  @Output() public childEvent =  new EventEmitter
+  @Output() 
+  childEvent =  new EventEmitter
+
+  constructor(private topicService: TopicService) { 
+    this.topicSelected = new Topic();
+  }
 
   ngOnInit() {
     this.listarTemas();
@@ -30,7 +34,7 @@ export class SearchTopicComponent implements OnInit {
     this.confirmarTema ();
   }
 
-  getOptionText(option) {
+  getOptionText(option : any) {
     if(option != null) {
       return option.titulo
     }else {
@@ -41,9 +45,7 @@ export class SearchTopicComponent implements OnInit {
   listarTemas(){
     this.topicService.listaTemas().subscribe(datos =>{
       if (datos instanceof HttpResponse) {
-        console.log(datos.body);
         this.filteredOptions=JSON.parse(JSON.stringify(datos.body));
-        console.log(this.listaTemasArray);
       }
     })
   }

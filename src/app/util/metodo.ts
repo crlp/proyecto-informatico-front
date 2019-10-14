@@ -1,5 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { ParametroUtil } from './parametroUtil';
+import swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss'
 
 export class Metodo {
 
@@ -39,5 +41,30 @@ export class Metodo {
         return headers;
     }
 
+    public static INIT  =  {
+        headers : Metodo.getHeadersInvocation(),
+        reportProgress: true,
+        responseType: 'json',
+    }
+
+    public static DIALOG_MESSAGE_SUCCESS(message : string){
+        swal.fire(
+            'Good Job!',
+            message,
+            'success'
+          )
+    }
+    
+
+    public static DIALOG_MESSAGE_ERROR(message : string){
+        swal.fire(
+            'Possible problems!',
+            message,
+            'error'
+        )
+    }
+    public static JSON_TO_OBJECT(message : any) : any{
+        return JSON.parse( JSON.stringify( message ) );
+    }
 
 }

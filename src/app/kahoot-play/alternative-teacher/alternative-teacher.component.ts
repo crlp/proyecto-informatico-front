@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/cor
 import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/modelo/question';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ActivityRealService } from 'src/services/firebase/activity-real.service';
+import { ActivityRealService } from 'src/services/activity-real.service';
 import { Usuario } from 'src/modelo/usuario';
 import { Answer } from 'src/modelo/answer';
 import { MatDialogConfig, MatDialog } from '@angular/material';
@@ -22,7 +22,7 @@ export class AlternativeTeacherComponent implements OnInit{
   participantes     = 0
   indicePregunta    = 0;
   contador          = 0;
-  contadorI          = 0;
+  contadorI         = 0;
   listaPreguntas    : Array<Question> = [];
   listaParticipants : Array<Usuario> = [];
   codigoActividad   : string;
@@ -63,34 +63,46 @@ export class AlternativeTeacherComponent implements OnInit{
 
   
   selectedQuestion() {
-    this.preguntaSelected = this.listaPreguntas[this.indicePregunta];
-    var listaRespuesta = new Array<Answer>()
     
-    for (let index = 0; index < 4; index++) {
-      try{
-        var answer = this.preguntaSelected.listaRespuestas[index];
-        if(answer.respuesta != ''){
-          listaRespuesta.push(answer);
+    var listaRespuesta = new Array<Answer>()
+
+    if( this.indicePregunta < this.listaPreguntas.length){
+
+      this.preguntaSelected = this.listaPreguntas[this.indicePregunta];
+
+      for (let index = 0; index < 4; index++) {
+        try{
+          var answer = this.preguntaSelected.listaRespuestas[index];
+          if(answer.respuesta){
+            listaRespuesta.push(answer);
+          }
         }
+        catch (ex) {}
       }
-      catch (ex) {}
-    }
 
-    this.preguntaSelected.listaRespuestas = listaRespuesta;
+      this.preguntaSelected.listaRespuestas = listaRespuesta;
 
-    this.activityRealService.listenerParticipantes(this.codigoActividad, this.preguntaSelected.$key)
-      .snapshotChanges().subscribe(item => {
-        this.listaParticipants = [];
-        item.forEach(element => {
-          var x = element.payload.toJSON()
-          x["$key"] = element.key;
-          this.listaParticipants.push(x as Usuario);
+      this.activityRealService.listenerParticipantes(this.codigoActividad, this.preguntaSelected.$key)
+        .snapshotChanges().subscribe(item => {
+          this.listaParticipants = [];
+          item.forEach(element => {
+            var x = element.payload.toJSON()
+            x["$key"] = element.key;
+            this.listaParticipants.push(x as Usuario);
+          });
+          this.participantes = this.listaParticipants.length;
         });
-        this.participantes = this.listaParticipants.length;
-      });
+    }else {
+      this.actividadTerminada();
+    }
   }
 
+  actividadTerminada(){
+    alert('Finalizo las preguntas');
+    
 
+    //obtengo los participantes...
+  }
 
   startCountDown(){
     this.contador = 20;

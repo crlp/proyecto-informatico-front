@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import * as CanvasJS from '../../../lib/canvasjs.min';
-import { ActivityRealService } from 'src/services/firebase/activity-real.service';
+import { ActivityRealService } from 'src/services/activity-real.service';
 import { Usuario } from 'src/modelo/usuario';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -27,8 +27,6 @@ export class ResultQuestionModalComponent implements OnInit {
   ngOnInit() {
 
     this.codigoActividad = this.route.snapshot.queryParamMap.get("codigo");
-
-    console.log()
     this.activityRealService.listenerParticipantes(this.codigoActividad, this.pregunta.$key).snapshotChanges().subscribe(item => {   
       this.listaParticipantes = new Array<Usuario> ()
       item.forEach(element => {

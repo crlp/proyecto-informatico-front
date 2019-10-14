@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Activity } from 'src/modelo/activity';
 import { Question } from 'src/modelo/question';
-import { ActivityService } from 'src/services/activity/activity.service';
+import { ActivityService } from 'src/services/activity.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -11,7 +11,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./modal-activity-detail.component.css']
 })
 export class ModalActivityDetailComponent implements OnInit {
-  question: Question;
+
+  question  : Question = null;
 
   constructor(
     public dialogRef: MatDialogRef<ModalActivityDetailComponent>,

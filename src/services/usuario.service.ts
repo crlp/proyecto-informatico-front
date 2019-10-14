@@ -24,13 +24,13 @@ export class UsuarioService {
 
   listarUsuarios(): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE +'/user/'+ localStorage.getItem(ParametroUtil.CODE_USER_STORAGE);
-    const req = new HttpRequest(ParametroUtil.GET, url, ParametroUtil.INIT);
+    const req = new HttpRequest(ParametroUtil.GET, url, Metodo.INIT);
     return this.http.request(req);
   }
 
   listarParametros(codigo): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE +'/values/'+codigo
-    const req = new HttpRequest(ParametroUtil.GET,  url, ParametroUtil.INIT);
+    const req = new HttpRequest(ParametroUtil.GET,  url, Metodo.INIT);
     return this.http.request(req);
   }
 
@@ -44,7 +44,7 @@ export class UsuarioService {
     return this.http.request(req);
   }
 
-  onUpload(files: File,codigo) {
+  onUpload(files: File, codigo : string) {
     const formData = new FormData();
     formData.append("file", files, files.name);
     let url = ParametroUtil.URL_BASE + '/user/'+codigo+'/photo'

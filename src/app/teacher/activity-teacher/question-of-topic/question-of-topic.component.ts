@@ -11,14 +11,15 @@ import { ModalActivityDetailComponent } from '../../../modal/activity/modal-acti
 })
 export class QuestionOfTopicComponent{
 
-  @Input() listaPreguntaOut : Array<Question> ;
-  activity        : Activity;
-  listaPreguntaOutAux: Question[];
+  listaPreguntaOutAux: Question[] = [];
+
+  @Input() 
+  listaPreguntaOut : Array<Question> ;
 
   constructor(public dialog: MatDialog) {
-   }
+  }
 
-   seeDetail(question): void {
+  seeDetail(question : Question): void {
     const dialogRef = this.dialog.open(ModalActivityDetailComponent, {
       width: '400px',
       data: question
@@ -28,12 +29,13 @@ export class QuestionOfTopicComponent{
       console.log('The dialog was closed');
     });
   }
-   deleteQuestion(activity){
+  
+  deleteQuestion(question : Question){
 
     this.listaPreguntaOutAux = new Array<Question>();
 
     this.listaPreguntaOut.forEach(out => {
-      if(out.pregunta != activity.pregunta) {
+      if(out.pregunta != question.pregunta) {
         this.listaPreguntaOutAux.push(out);
       }
     });

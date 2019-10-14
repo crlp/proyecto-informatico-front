@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { UsuarioService } from 'src/services/user/usuario.service';
+import { UsuarioService } from 'src/services/usuario.service';
 import { MensajeUtil } from 'src/app/util/mensajeUtil';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 

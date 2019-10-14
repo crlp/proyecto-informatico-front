@@ -11,14 +11,14 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Nombres</label>
-                <input type="text" maxlength="50" [(ngModel)]="listaUsuario.nombres" name="nombres" class="form-control"
+                <input type="text" maxlength="50" [(ngModel)]="usuario.nombres" name="nombres" class="form-control"
                   disabled>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Apellidos</label>
-                <input type="text" maxlength="50" [(ngModel)]="listaUsuario.apellidos" name="apellidos"
+                <input type="text" maxlength="50" [(ngModel)]="usuario.apellidos" name="apellidos"
                   class="form-control" disabled>
               </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Codigo de Usuario</label>
-                <input type="text" maxlength="50" [(ngModel)]="listaUsuario.usuario" name="usuario" class="form-control"
+                <input type="text" maxlength="50" [(ngModel)]="usuario.usuario" name="usuario" class="form-control"
                   disabled>
               </div>
             </div>
@@ -36,40 +36,40 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Edad </label>
-                <input type="number" maxlength="2" [(ngModel)]="listaUsuario.edad" name="edad" class="form-control">
+                <input type="number" maxlength="2" [(ngModel)]="usuario.edad" name="edad" class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Contacto de Emergencia</label>
-                <input type="number" maxlength="9" [(ngModel)]="listaUsuario.telefonoCasa" name="telefonoCasa"
+                <input type="number" maxlength="9" [(ngModel)]="usuario.telefonoCasa" name="telefonoCasa"
                   class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Telefono Celular</label>
-                <input type="number" maxlength="9" [(ngModel)]="listaUsuario.telefonoCelular" name="telefonoCelular"
+                <input type="number" maxlength="9" [(ngModel)]="usuario.telefonoCelular" name="telefonoCelular"
                   class="form-control" />
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" *ngIf="false">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Estado Civil</label>
                 <select class="form-control" (change)="onChangeCivil($event.target)">
                   <option class="form-control" *ngFor="let opt of listaEstadoCivil" [value]="opt?.codigo"
-                    [selected]="opt?.codigo==listaUsuario?.estadoCivil?.codigo">{{opt.nombre}}</option>
+                    [selected]="opt?.codigo==usuario?.estadoCivil?.codigo">{{opt.nombre}}</option>
                 </select>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" *ngIf="false">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Sexo</label>
                 <select class="form-control" (change)="onChangeSexo($event.target)">
                   <option class="form-control" *ngFor="let opt of listaSexo" [value]="opt?.codigo"
-                    [selected]="opt?.codigo == listaUsuario?.sexo?.codigo">{{opt.nombre}}</option>
+                    [selected]="opt?.codigo == usuario?.sexo?.codigo">{{opt.nombre}}</option>
                 </select>
               </div>
             </div>
@@ -78,25 +78,25 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Dirección</label>
-                <input type="text" maxlength="100" [(ngModel)]="listaUsuario.direccion" name="direccion"
+                <input type="text" maxlength="100" [(ngModel)]="usuario.direccion" name="direccion"
                   class="form-control">
               </div>
             </div>
-            <div class="col-md-4" style="visibility: hidden;">
+            <div class="col-md-4" *ngIf="false">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Estado de Usuario</label>
                 <select class="form-control" (change)="onChangeEstado($event.target)" disabled>
                   <option *ngFor="let opt of listaEstado" [value]="opt?.codigo"
-                    [selected]="opt?.codigo == listaUsuario?.estado?.codigo">{{opt.nombre}}</option>
+                    [selected]="opt?.codigo == usuario?.estado?.codigo">{{opt.nombre}}</option>
                 </select>
               </div>
             </div>
-            <div class="col-md-4" style="visibility: hidden;">
+            <div class="col-md-4" *ngIf="false">
               <div class="form-group">
                 <label class="bmd-label-floating" style="top: -1rem;">Perfil</label>
                 <select class="form-control" (change)="onChangePerfil($event.target)" disabled>
                   <option *ngFor="let opt of listaPerfil" [value]="opt?.codigo"
-                    [selected]="opt?.codigo==listaUsuario?.perfil?.codigo">{{opt.nombre}}</option>
+                    [selected]="opt?.codigo==usuario?.perfil?.codigo">{{opt.nombre}}</option>
                 </select>
               </div>
             </div>
@@ -111,7 +111,7 @@
       <div class="card-avatar">
         <div class="form-group" style="margin-top: 0px;">
           <input type="file" name="file" id="file" (change)="onFileChanged($event)" #photoInput />
-          <img [src]="'data:image/jpg;base64,'+listaUsuario?.foto" (click)="photoInput.click()" />
+          <img [src]="'data:image/jpg;base64,'+usuario?.foto" (click)="photoInput.click()" />
         </div>
       </div>
       <div class="card-body">

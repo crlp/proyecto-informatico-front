@@ -1,11 +1,5 @@
-<div class="contents">
-    <div class="container-fluid">
-      <div class="row ">
-       <div  *ngFor = "let respuesta of preguntas  ; let i = index" class="col-md-6 quarter" >
-          <div (click) ="respuestaSeleccionada(respuesta, i)">
-            <div class= "pregunta-text">{{respuesta.respuesta}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="line">
+<div  *ngFor = "let respuesta of preguntas  ; let i = index" class="col-md-6 quad tablero-{{i+1}}" (click) ="respuestaSeleccionada(respuesta, i)">
+    <span class="text-style">{{respuesta.respuesta}}</span>
+</div>
+</div>

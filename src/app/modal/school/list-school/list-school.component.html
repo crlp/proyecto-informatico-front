@@ -1,0 +1,52 @@
+
+<div class="card ">
+    <div class="card-header">
+      <h4 class="card-title"> Schools</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table tablesorter tablesorter-default tablesorterba50578eca0be" id="simple-table" role="grid">
+          <thead class=" text-primary">
+            <tr role="row" class="tablesorter-headerRow">
+              <th *ngFor="let item of cabeceras" data-column="0" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="simple-table" unselectable="on" aria-sort="none" aria-label="Name: No sort applied, activate to apply an ascending sort" style="user-select: none;">
+                <div class="tablesorter-header-inner" class="text-center" style="font-weight: bold;">
+                  {{item}}
+              </div>
+            </th>
+            </tr>
+          </thead>
+          <tbody aria-live="polite" aria-relevant="all">
+            <tr *ngFor="let colegio of listaColegios"  role="row">
+              <td class="text-center">
+                {{colegio.nombre}}
+              </td>
+              <td class="text-center">
+                  {{colegio.ruc}}
+              </td>
+              <td class="text-center">
+                  {{colegio.direccion}}
+              </td>
+              <td class="text-center">
+                  {{colegio.telefono}}
+              </td>
+              <td class="text-center">
+                  {{colegio.director}}
+              </td>
+
+              <td class="text-center">
+                  <button mat-button (click)="editColegio(colegio)">
+                      <mat-icon>edit</mat-icon>
+                  </button>
+
+                  <button mat-button (click)="deleteColegio(colegio)">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="submit" class="btn btn-danger pull-right" (click)="close()" >Close</button>
+    </div>
+
+  </div>

@@ -8,7 +8,62 @@
             <p class="card-category"> In this section you can make your class. You only need to selectd the date.</p>
           </div>
           <div class="card-body">
-            
+
+            <div class="row">
+              <div class="col-md-12">
+                <button type="button" class="btn btn-warning pull-right" (click)="pintar()">
+                  <mat-icon>chrome_reader_mode</mat-icon>
+                  Create syllabus
+                </button>
+                <button type="button" class="btn btn-primary pull-right" (click)="crearTema()">
+                  <mat-icon>class</mat-icon>
+                  Create topic
+                </button>
+
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field style="width: 100%">
+                  <input matInput placeholder="Please write the subject title! ">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field style="width: 100%">
+                  <input matInput placeholder="Please write the subject description! ">
+                </mat-form-field>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-9" style="padding-top: 16px">
+                Please write your content
+              </div>
+
+              <div class="col-md-3">
+                <button type="button" class="btn btn-warning pull-right" (click)="pintar()">
+                  <mat-icon>add_box</mat-icon>
+                  Add Section
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <ckeditor [(ngModel)]="modelo" [editor]="editor"></ckeditor>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button type="button" class="btn btn-primary pull-right" (click)="crearSylabuss()">
+                  <mat-icon>save</mat-icon>
+                  Save
+                </button>
+              </div>
+            </div>
+            <!--
               <app-search-topic (childEvent)="recepcionTema($event)" #searchTopic></app-search-topic>
               
             <div class="table-responsive">
@@ -46,7 +101,7 @@
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>

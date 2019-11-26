@@ -4,7 +4,7 @@
 }
 
 .fondobody{
-    background-image: url('../../../assets/img/fondologin.png') !important;
+    background-color: #1eb9f6 !important;
         /* Full height */
     height: 100%; 
 
@@ -14,3 +14,8 @@
     background-size: cover;
 }
 
+.img-login{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}

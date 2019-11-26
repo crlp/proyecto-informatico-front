@@ -1,0 +1,10 @@
+<div 
+style="padding-bottom: 16px">Please select your option</div>
+<mat-radio-group
+  aria-label="Selected your option"
+  [(ngModel)]="optionSelected">
+  <mat-radio-button class="example-radio-button" *ngFor="let option of optionsRbt" [value]="option"
+  (change)="onChange($event)" style="margin-left: 8px">
+    {{option}}
+  </mat-radio-button>
+</mat-radio-group>

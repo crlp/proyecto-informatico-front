@@ -10,14 +10,14 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Nombres</label>
+                <label class="bmd-label-floating" style="top: -1rem;">Name</label>
                 <input type="text" maxlength="50" [(ngModel)]="usuario.nombres" name="nombres" class="form-control"
                   disabled>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Apellidos</label>
+                <label class="bmd-label-floating" style="top: -1rem;">Last Name</label>
                 <input type="text" maxlength="50" [(ngModel)]="usuario.apellidos" name="apellidos"
                   class="form-control" disabled>
               </div>
@@ -25,7 +25,7 @@
 
             <div class="col-md-4">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Codigo de Usuario</label>
+                <label class="bmd-label-floating" style="top: -1rem;">Code User</label>
                 <input type="text" maxlength="50" [(ngModel)]="usuario.usuario" name="usuario" class="form-control"
                   disabled>
               </div>
@@ -35,21 +35,21 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Edad </label>
-                <input type="number" maxlength="2" [(ngModel)]="usuario.edad" name="edad" class="form-control">
+                <label class="bmd-label-floating" style="top: -1rem;">Age </label>
+                <input id = "numberTelefono" type="number" data-bind="value:numberTelefono" min="5" max="21"  [(ngModel)]="usuario.edad" name="edad" class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Contacto de Emergencia</label>
-                <input type="number" maxlength="9" [(ngModel)]="usuario.telefonoCasa" name="telefonoCasa"
+                <label class="bmd-label-floating" style="top: -1rem;">Emergency number</label>
+                <input id = "numberContacto" type="number" data-bind="value:numberContacto" [(ngModel)]="usuario.telefonoCasa" name="telefonoCasa"
                   class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Telefono Celular</label>
-                <input type="number" maxlength="9" [(ngModel)]="usuario.telefonoCelular" name="telefonoCelular"
+                <label class="bmd-label-floating" style="top: -1rem;">Phone number</label>
+                <input id = "numberCelular" type="number" data-bind="value:numberCelular"[(ngModel)]="usuario.telefonoCelular" name="telefonoCelular"
                   class="form-control" />
               </div>
             </div>
@@ -77,9 +77,10 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label class="bmd-label-floating" style="top: -1rem;">Dirección</label>
-                <input type="text" maxlength="100" [(ngModel)]="usuario.direccion" name="direccion"
-                  class="form-control">
+                <label class="bmd-label-floating" style="top: -1rem;">Direction</label>
+                <!--<input type="text" maxlength="100" [(ngModel)]="usuario.direccion" name="direccion"
+                  class="form-control">-->
+                  <textarea class="form-control my-5" id="textareaExample" [(ngModel)]="usuario.direccion" name="direccion" maxlength="250"></textarea>
               </div>
             </div>
             <div class="col-md-4" *ngIf="false">

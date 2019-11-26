@@ -74,9 +74,14 @@ export class ActivityRealService {
     return this.activityRealObject = this.firebase.object('activity-real/' + codigo + "/questions/"+ key + "/activado");
   }
 
-  registraPreguntaActiva (codigo: string, key : String){
+  registraPreguntaActiva (codigo: string, key : string, positionPregunta: number){
     let urlDatabase = this.firebase.database.ref('activity-real/' + codigo + "/questions/"+ key + "/activado");
-    this.firebase.object(urlDatabase).set(1) ;
+    this.firebase.object(urlDatabase).set(positionPregunta) ;
+  }
+
+  registraFinDePregunta(codigo: string, key : string, positionPregunta: number){
+    let urlDatabase = this.firebase.database.ref('activity-real/' + codigo + "/questions/"+ key + "/activado");
+    this.firebase.object(urlDatabase).set(positionPregunta) ;
   }
 
   registrarParticipanteRespuestas(codigo: string, key : string, usuarioParticipante : Usuario) {
@@ -91,12 +96,17 @@ export class ActivityRealService {
 
   registrarPreguntas(codigo: string, listaPreguntas : Array<Question>) {
     let urlDatabase  = this.firebase.database.ref('activity-real/' + codigo + "/questions");
-    console.log(urlDatabase);
     this.activityRealList = this.firebase.list(urlDatabase) ;
-
     listaPreguntas.forEach(element => {
-      element.activado = '0'
-      this.activityRealList.push(element);
+      if(element){
+        element.activado = '-1'
+        this.activityRealList.push(element);
+      }
     });   
+
+
+    let urlQuestionFinished = this.firebase.database.ref('activity-real/' + codigo + "/questions/status");
+    this.activityRealObject = this.firebase.object(urlQuestionFinished);
+    this.activityRealObject.set( {'actividadFinished': 0 } );
   }
 }

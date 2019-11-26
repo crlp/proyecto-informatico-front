@@ -6,20 +6,28 @@ import { ActivityService } from 'src/services/activity.service';
 import { HttpResponse } from '@angular/common/http';
 import { Activity } from 'src/modelo/activity';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-class',
   templateUrl: './class.component.html',
   styleUrls: ['./class.component.css']
 })
-export class ClassComponent{
+export class ClassComponent implements OnInit{
+
   
   topic            : Topic      = null ;
   activitySelected : Activity   = null;
 
   activities       : Activity[] = [] ;
+  editor = ClassicEditor;
+  modelo :string = '';
 
   constructor(public dialog: MatDialog,private activityService : ActivityService, private spinner : NgxSpinnerService) { }
+
+  ngOnInit(): void {
+   
+  }
 
   showOwnActivities(activity : Activity){
     this.activitySelected = activity;
@@ -45,6 +53,11 @@ export class ClassComponent{
       }
       this.spinner.hide();
     })
+  }
+  
+  pintar(){
+    console.log(this.modelo)
+  
   }
 
 }

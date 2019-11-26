@@ -4,6 +4,7 @@ import { Usuario } from 'src/modelo/usuario';
 import { HttpResponse } from '@angular/common/http';
 import { Metodo } from 'src/app/util/metodo';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -16,8 +17,9 @@ export class MenuComponent implements OnInit {
 
   showAlumno   = false
   showProfesor = false
+  showAdministrador = false
 
-  constructor(private usuarioService: UsuarioService) { 
+  constructor(private usuarioService: UsuarioService, private router: Router) { 
     this.usuario = new Usuario();
   }
 
@@ -40,6 +42,8 @@ export class MenuComponent implements OnInit {
       this.showAlumno = true;
     }else if(this.usuario.perfil.valor == ParametroUtil.FLAG_TEACHER){
       this.showProfesor = true;
+    }else if(this.usuario.perfil.valor == ParametroUtil.FLAG_ADMINISTRADOR){
+      this.showAdministrador = true;
     }
   }
 

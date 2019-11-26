@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatExpansionModule, MatInputModule, MatIconModule, 
-  MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatListModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+  MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatListModule, MAT_DIALOG_DATA, MatDialogRef, MatTableModule, MatSelectModule, MatRadioModule, MatCheckboxModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule }  from 'ngx-spinner';
 
@@ -36,7 +36,18 @@ import { AngularFireDatabaseModule} from 'angularfire2/database'
 import { environment} from '../environments/environment';
 import { ActivitiesListComponent } from './student/activities-list/activities-list.component';
 import { ResultQuestionModalComponent } from './kahoot-play/result-question-modal/result-question-modal.component';
-import { UploadPictureComponent } from './user/upload-picture/upload-picture.component'
+import { UploadPictureComponent } from './user/upload-picture/upload-picture.component';
+import { SchoolComponent } from './maintenance/school/school.component'
+import { ListSchoolComponent } from './modal/school/list-school/list-school.component';
+import { PersonalSchoolComponent } from './maintenance/personal-school/personal-school.component';
+import { SearchSchoolComponent } from './school/search-school/search-school.component';
+import { SchoolService } from 'src/services/school.service';
+import { ImportStudentComponent } from './school/import-student/import-student.component';
+import { AssignRoomsComponent } from './school/assign-rooms/assign-rooms.component';
+import { RbtStudentTeacherComponent } from './school/rbt-student-teacher/rbt-student-teacher.component';
+import { SearchTeacherComponent } from './school/search-teacher/search-teacher.component';
+import { MultichckRoomsComponent } from './school/multichck-rooms/multichck-rooms.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular'; 
 
 @NgModule({
   declarations: [
@@ -57,6 +68,15 @@ import { UploadPictureComponent } from './user/upload-picture/upload-picture.com
     ActivitiesListComponent,
     ResultQuestionModalComponent,
     UploadPictureComponent,
+    SchoolComponent,
+    ListSchoolComponent,
+    PersonalSchoolComponent,
+    SearchSchoolComponent,
+    ImportStudentComponent,
+    AssignRoomsComponent,
+    RbtStudentTeacherComponent,
+    SearchTeacherComponent,
+    MultichckRoomsComponent,
     ],
   imports: [
     BrowserModule,
@@ -80,10 +100,15 @@ import { UploadPictureComponent } from './user/upload-picture/upload-picture.com
     MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    MatTableModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    CKEditorModule
+    
   ],
-  providers: [UsuarioService, ActivityService, LoginGuard,NoLoginGuard , NgbActiveModal, TopicService, CreateQuizComponent, NgxSpinnerModule, { provide: MAT_DIALOG_DATA, useValue: {} },  { provide: MatDialogRef, useValue: {} }],
+  providers: [UsuarioService, SchoolService, ActivityService, LoginGuard,NoLoginGuard , NgbActiveModal, TopicService, CreateQuizComponent, NgxSpinnerModule, { provide: MAT_DIALOG_DATA, useValue: {} },  { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [ModalConfirmationComponent, ModalActivityDetailComponent, OwnActivitiesByTopicComponent, ResultQuestionModalComponent]
+  entryComponents: [ModalConfirmationComponent, ModalActivityDetailComponent, OwnActivitiesByTopicComponent, ResultQuestionModalComponent, ListSchoolComponent]
   
 })
 export class AppModule { }

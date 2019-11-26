@@ -8,7 +8,7 @@
   <h2 mat-subheader>Answer</h2>
   <mat-list-item *ngFor="let answer of question.listaRespuestas">
     <mat-icon mat-list-icon>question_answer</mat-icon>
-    <h4 mat-line>{{answer.respuesta}}</h4>
+    <h4 mat-line>{{answer.respuesta}} {{answer.flagCorrecto.codigo == '60'? 'Correct' : 'Incorrect'}} </h4>
   </mat-list-item>
 </mat-list>
 

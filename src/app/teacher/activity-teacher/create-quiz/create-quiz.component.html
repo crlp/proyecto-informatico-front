@@ -23,7 +23,7 @@
                 </mat-expansion-panel-header>
                 
                 <app-search-topic (childEvent)="recepcionTema($event)" #searchTopic></app-search-topic>
-
+                <span class="" *ngIf="messageErrorTema"> Please, selected a topic to continue</span>
                 <mat-action-row>
                   <button mat-button color="primary" (click)="nextStep()">Next</button>
                 </mat-action-row>

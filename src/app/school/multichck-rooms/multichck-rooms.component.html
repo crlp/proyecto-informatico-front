@@ -1,0 +1,16 @@
+<!--<div *ngFor="let option of allSalones; let i = index" >
+  <mat-checkbox> option.nombre </mat-checkbox>
+</div> -->
+
+<mat-card class="result">
+  <mat-card-content>
+    <h2 class="example-h2">Update your classrooms </h2>
+    <section class="example-section">
+      <div class="form-row" *ngFor="let option of allSalones; let i = index">
+        <div class="col">
+          <mat-checkbox  [(ngModel)]="option.selected">{{option.descripcion}}</mat-checkbox>
+        </div>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>

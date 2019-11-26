@@ -1,0 +1,11 @@
+<form class="example-form" width="100%">
+    <mat-form-field class="example-full-width">
+      <input placeholder="Please select a grade and section to complete action" type="text" aria-label="Number" matInput
+        [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedGradeSection($event)" [displayWith]="getOptionText">
+        <mat-option *ngFor="let option of filteredOptions; let i = index" [value]="option">
+          {{ option.descripcion }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>

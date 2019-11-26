@@ -1,14 +1,57 @@
-<mat-form-field>
-  <input [(ngModel)] = "answer1" matInput placeholder="1. * Enter your CORRECT answer about the topic in this text-box! ">
-</mat-form-field>
-<mat-form-field>
-  <input [(ngModel)] = "answer2" matInput placeholder="2. * Enter your INCORRECT answer about the topic in this text-box">
-</mat-form-field>
-<mat-form-field>
-  <input [(ngModel)] = "answer3" matInput
-    placeholder="3. (IT IS NOT OBLIGATORY) Enter your INCORRECT answer about the topic in this text-box">
-</mat-form-field>
-<mat-form-field>
-  <input [(ngModel)] = "answer4" matInput
-    placeholder="4. (IT IS NOT OBLIGATORY)  Enter your INCORRECT answer about the topic in this text-box">
-</mat-form-field>
+<div class="row">
+  <div class="col-md-1.5">
+    <div class="form-group">
+        <button mat-raised-button [color]="toggleButton1 ? 'primary' : 'accent'" (click)="enviarCorrecto(1)">{{textButton1}}</button>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="form-group">
+      <mat-form-field>
+        <input [(ngModel)]="answer1" matInput placeholder="* Enter your answer about the topic in this text-box! ">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-1.5">
+      <div class="form-group">
+          <button mat-raised-button [color]="toggleButton2 ? 'primary' : 'accent'" (click)="enviarCorrecto(2)">{{textButton2}}</button>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="form-group">
+        <mat-form-field>
+          <input [(ngModel)]="answer2" matInput placeholder="* Enter your answer about the topic in this text-box! ">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-1.5">
+        <div class="form-group">
+            <button mat-raised-button  [color]="toggleButton3 ? 'primary' : 'accent'"  (click)="enviarCorrecto(3)">{{textButton3}}</button>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="form-group">
+          <mat-form-field>
+            <input  [(ngModel)]="answer3" matInput placeholder="* Enter your answer about the topic in this text-box! ">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1.5">
+          <div class="form-group">
+              <button mat-raised-button [color]="toggleButton4 ? 'primary' : 'accent'" (click)="enviarCorrecto(4)">{{textButton4}}</button>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="form-group">
+            <mat-form-field>
+              <input [(ngModel)]="answer4" matInput placeholder="* Enter your answer about the topic in this text-box! ">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>

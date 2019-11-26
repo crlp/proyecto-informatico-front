@@ -1,117 +1,130 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Question } from 'src/modelo/question';
-import { Answer } from 'src/modelo/answer';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ActivityRealService } from 'src/services/activity-real.service';
-import { ParametroUtil } from 'src/app/util/parametroUtil';
-import { Usuario } from 'src/modelo/usuario';
-import { interval } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Question } from "src/modelo/question";
+import { Answer } from "src/modelo/answer";
+import { NgxSpinnerService } from "ngx-spinner";
+import { ActivityRealService } from "src/services/activity-real.service";
+import { ParametroUtil } from "src/app/util/parametroUtil";
+import { Usuario } from "src/modelo/usuario";
+import { interval } from "rxjs";
 
 @Component({
-  selector: 'app-alternative-student',
-  templateUrl: './alternative-student.component.html',
-  styleUrls: ['./alternative-student.component.css']
+  selector: "app-alternative-student",
+  templateUrl: "./alternative-student.component.html",
+  styleUrls: ["./alternative-student.component.css"]
 })
 export class AlternativeStudentComponent implements OnInit {
- 
-  listaPreguntas    = new Array<Question>();
-  questionSelected  = new Question();
-  preguntas         : Array<Answer> = [];
-  usuarioSession    : Usuario;
+  
+  listaPreguntas = new Array<Question>();
+  questionSelected = new Question();
+  preguntas: Array<Answer> = [];
+  usuarioSession: Usuario;
 
-  codigoActividad   : string;
-  posicionPregunta  = 0;
+  codigoActividad: string;
+  posicionPregunta = 0;
 
-  firsTime : boolean = false;
+  firsTime: boolean = false;
 
-  constructor(private route: ActivatedRoute, private spinner : NgxSpinnerService,  private activityRealService : ActivityRealService) {
+  arrPreguntasDesahabilitadas = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService,
+    private activityRealService: ActivityRealService
+  ) {
     this.spinner.show();
+    this.usuarioSession = JSON.parse( localStorage.getItem(ParametroUtil.USER_STORAGE) );
+    this.codigoActividad = this.route.snapshot.queryParamMap.get("codigo");
+    this.arrPreguntasDesahabilitadas.push(-1);
   }
 
   ngOnInit() {
-    this.usuarioSession = JSON.parse(localStorage.getItem(ParametroUtil.USER_STORAGE));
-    this.codigoActividad = this.route.snapshot.queryParamMap.get("codigo");
 
-    this.activityRealService.listenerParticipant(this.codigoActividad).snapshotChanges().subscribe( item => {
-      this.listaPreguntas = [];
-      item.forEach(element => {
-        var x = element.payload.toJSON()
-        x["$key"] = element.key;
-        this.listaPreguntas.push(x as Question);
+    // Leer  a activity-real/{codigo}/questions
+    this.activityRealService
+      .listenerParticipant(this.codigoActividad)
+      .snapshotChanges()
+      .subscribe(item => {
+        this.listaPreguntas = [];
+        item.forEach(element => {
+          var x = element.payload.toJSON();
+          x["$key"] = element.key;
+          this.listaPreguntas.push(x as Question);
+        });
+        this.listenerPreguntas();
       });
-      this.listenerPreguntas();
-    });
   }
 
-  listenerPreguntas(){
+  listenerPreguntas() {
     this.listaPreguntas.forEach(element => {
-      this.iniciarListenerPregunta(element.$key)
+      this.iniciarListenerPregunta(element.$key);
     });
   }
 
-  iniciarListenerPregunta(key: string){
-    this.activityRealService.listenerPregunta(this.codigoActividad, key).snapshotChanges().subscribe( item => {
-      var x = item.payload.toJSON()
-      if(x != ''){
-        
-        this.spinner.hide();
-        this.inicializarCuenta(this.posicionPregunta);
-      
-      }
-     
-    });
+  iniciarListenerPregunta(key: string) {
+    this.activityRealService
+      .listenerPregunta(this.codigoActividad, key)
+      .snapshotChanges()
+      .subscribe(item => {
+        var x = item.payload.toJSON();
+        if (this.arrPreguntasDesahabilitadas.indexOf(x) == -1) {
+          this.arrPreguntasDesahabilitadas.push(x);
+          this.spinner.hide();
+          this.posicionPregunta = parseInt(x.toString(), 0);
+          this.inicializarCuenta(this.posicionPregunta);
+        }
+      });
   }
-  inicializarCuenta(posicion : number){
+
+  inicializarCuenta(posicion: number) {
     this.selectedQuestion(posicion);
-    this.startCountDown(20);
+ //   this.startCountDown(20);
   }
 
   selectedQuestion(posicion: number) {
-    this.questionSelected = this.listaPreguntas[posicion]
+    this.questionSelected = this.listaPreguntas[posicion];
     this.preguntas = new Array<Answer>();
 
     for (let index = 0; index < 4; index++) {
-      try{
+      try {
         var answer = this.questionSelected.listaRespuestas[index];
-        if(answer.respuesta){
+        if (answer.respuesta) {
           this.preguntas.push(answer);
         }
-      }
-      catch (ex) {}
+      } catch (ex) {}
     }
   }
 
-  respuestaSeleccionada(respuesta : Answer, position:string ){
+  respuestaSeleccionada(respuesta: Answer, position: string) {
     this.spinner.show();
-    
-    var usuarioClean = new Usuario()
-    usuarioClean.codigo = this.usuarioSession.codigo
-    usuarioClean.nombres = this.usuarioSession.nombres
-    usuarioClean.apellidos = this.usuarioSession.apellidos
-    usuarioClean.codigoRespuesta = position;
-    
-    this.activityRealService.registrarParticipanteRespuestas(this.codigoActividad,  this.questionSelected.$key, usuarioClean);
 
+    var usuarioClean = new Usuario();
+    usuarioClean.codigo = this.usuarioSession.codigo;
+    usuarioClean.nombres = this.usuarioSession.nombres;
+    usuarioClean.apellidos = this.usuarioSession.apellidos;
+    usuarioClean.codigoRespuesta = position;
+
+    this.activityRealService.registrarParticipanteRespuestas(
+      this.codigoActividad,
+      this.questionSelected.$key,
+      usuarioClean
+    );
   }
 
+  startCountDown(seconds) {
+    var counter = seconds;
 
- startCountDown(seconds){
-  
-  var counter = seconds;
-
-	 var interval = setInterval(() => {
+    var interval = setInterval(() => {
       counter--;
-      if (counter < 0 ) {
+      if (counter < 0) {
         clearInterval(interval);
         this.spinner.show();
-        this.posicionPregunta ++
-      }	
-	  }, 1000);
+        this.posicionPregunta++;
+      }
+    }, 1000);
   }
 
-  ayuda(){
-
-    this.posicionPregunta --
+  ayuda() {
+    this.posicionPregunta--;
   }
 }

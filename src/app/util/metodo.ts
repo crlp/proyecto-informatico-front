@@ -67,4 +67,9 @@ export class Metodo {
         return JSON.parse( JSON.stringify( message ) );
     }
 
+    public static JSON_TO_OBJECT_PAGEABLE(message : any) : any{
+        return JSON.parse( JSON.stringify( message.content ) );
+    }
+
+
 }

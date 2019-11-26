@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Maintenance - School</h4>
+       </div>
+      <div class="card-body">
+         <form>
+          <div class="row">
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label class="bmd-label-floating" style="top: -1rem;">School</label>
+                <input type="text" [(ngModel)] = "_colegioSelected.nombre" name="_colegioSelected.nombre" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating" style="top: -1rem;">RUC</label>
+                <input type="text" maxlength="10" [(ngModel)] = "_colegioSelected.ruc" name="_colegioSelected.ruc" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="bmd-label-floating" style="top: -1rem;">Phone </label>
+                <input id="text"  maxlength="9" name="_colegioSelected.telefono" [(ngModel)] = "_colegioSelected.telefono" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9">
+              <div class="form-group">
+                <label class="bmd-label-floating" style="top: -1rem;">Direction</label>
+                <input id="text"  name="_colegioSelected.direccion" [(ngModel)] = "_colegioSelected.direccion" class="form-control">
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="bmd-label-floating" style="top: -1rem;">Principal's Name</label>
+                <input  name="_colegioSelected.director" [(ngModel)] = "_colegioSelected.director" class="form-control">
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary pull-right" (click)= "grabarColegio()">Save School</button>
+          <button type="button" class="btn btn-info pull-right" (click)= "limpiarTexto()">Clear</button>
+          <button type="button" class="btn btn-warning pull-left" (click)="listarColegios()">See Schools</button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--<div class="col-md-4">
+    <div class="card card-profile">
+      <div class="card-avatar">
+        <div class="form-group" style="margin-top: 0px;">
+          <input type="file" name="file" id="file" (change)="onFileChanged($event)" #photoInput />
+          <img [src]="'data:image/jpg;base64,'+usuario?.foto" (click)="photoInput.click()" />
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          En esta sección puedes realizar tu cambio de foto. Pulsa encima de la foto para poder escoger tu foto.
+        </p>
+        <button type="button" class="btn btn-primary pull-left" (click)="actualizarFoto()" [disabled]="!image">Cambiar
+          Foto</button>
+      </div>
+    </div>
+  </div>-->
+</div>

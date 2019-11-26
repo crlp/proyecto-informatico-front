@@ -13,6 +13,8 @@ import { ParticipantsActiveComponent } from './kahoot-play/participants-active/p
 import { ActivitiesListComponent } from './student/activities-list/activities-list.component';
 import { AlternativeTeacherComponent } from './kahoot-play/alternative-teacher/alternative-teacher.component';
 import { AlternativeStudentComponent } from './kahoot-play/alternative-student/alternative-student.component';
+import { SchoolComponent } from './maintenance/school/school.component';
+import { PersonalSchoolComponent } from './maintenance/personal-school/personal-school.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -27,7 +29,9 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
     { path: 'class', component: ClassComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
     { path: 'create-quiz', component: CreateQuizComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
-    { path: 'activity-list', component: ActivitiesListComponent, outlet: 'menulateral', canActivate:[LoginGuard] }
+    { path: 'activity-list', component: ActivitiesListComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
+    { path: 'school', component: SchoolComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
+    { path: 'personal-school', component: PersonalSchoolComponent, outlet: 'menulateral', canActivate:[LoginGuard] }
   ]}
 ];
 
@@ -43,4 +47,5 @@ export const routingComponents = [MenuComponent,
                                   DashboardComponent,
                                   ClassComponent,
                                   CreateQuizComponent,
-                                  ActivitiesListComponent] 
+                                  ActivitiesListComponent,
+                                  PersonalSchoolComponent] 

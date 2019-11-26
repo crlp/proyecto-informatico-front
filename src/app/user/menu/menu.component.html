@@ -34,13 +34,19 @@
                 </a>
             </li>
               <li class="nav-item ">
-              <a class="nav-link">
-                  <i class="material-icons">poll</i>
-                  <p>Reports</p>
-              </a>
+                <a class="nav-link" *ngIf="showAdministrador" [routerLink]="['/menu/',{ outlets: { menulateral: ['school'] } }]" routerLinkActive="active">
+                    <i class="material-icons">person</i>
+                    <p>School - Maintenance</p>
+                </a>
               </li>
               <li class="nav-item ">
-              <a class="nav-link" [routerLink]="['/menu/',{ outlets: { menulateral: ['home'] } }]" routerLinkActive="active">
+                    <a class="nav-link" *ngIf="showAdministrador" [routerLink]="['/menu/',{ outlets: { menulateral: ['personal-school'] } }]" routerLinkActive="active">
+                        <i class="material-icons">person</i>
+                        <p>Classroom - Maintenance</p>
+                    </a>
+                  </li>
+              <li class="nav-item ">
+              <a class="nav-link" *ngIf="!showAdministrador" [routerLink]="['/menu/',{ outlets: { menulateral: ['home'] } }]" routerLinkActive="active">
                   <i class="material-icons">person</i>
                   <p>User Profile</p>
               </a>

@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "@ckeditor/ckeditor5-angular": "^1.1.2",
+    "@ckeditor/ckeditor5-build-classic": "^15.0.0",
     "@material/dialog": "^3.0.0",
     "@ng-bootstrap/ng-bootstrap": "^4.2.0",
     "@rxjs/rx": "^4.1.0",
@@ -38,6 +40,7 @@
     "rxjs-observable": "0.0.7",
     "sweetalert2": "^8.13.0",
     "tslib": "^1.9.0",
+    "xlsx": "^0.15.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

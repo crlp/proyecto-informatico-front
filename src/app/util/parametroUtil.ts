@@ -24,6 +24,7 @@ export class ParametroUtil {
 
     public static FLAG_STUDENT = "EST"
     public static FLAG_TEACHER = "PRO"
+    public static FLAG_ADMINISTRADOR = "ADM"
 
     public static STATUS_PEND  = "PENDIENTE"
     public static STATUS_FINI  = "FINALIZADO"

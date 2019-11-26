@@ -19,7 +19,7 @@ import { AlternativeStudentComponent } from '../alternative-student/alternative-
 export class AlternativeTeacherComponent implements OnInit{
 
   preguntaSelected  = new Question();
-  participantes     = 0
+  participantes     = 0;
   indicePregunta    = 0;
   contador          = 0;
   contadorI         = 0;
@@ -27,6 +27,8 @@ export class AlternativeTeacherComponent implements OnInit{
   listaParticipants : Array<Usuario> = [];
   codigoActividad   : string;
   firstTime : boolean = false;
+
+  
 
   constructor(private route: ActivatedRoute, private spinner : NgxSpinnerService, private activityRealService : ActivityRealService
     ,private  dialog:  MatDialog) {
@@ -36,6 +38,9 @@ export class AlternativeTeacherComponent implements OnInit{
   ngOnInit() {
     this.codigoActividad = this.route.snapshot.queryParamMap.get("codigo");
     this.listenerTime()
+
+    this.activityRealService.registraPreguntaActiva(this.codigoActividad, this.preguntaSelected.$key, 0); //Registrar primera pregunta activa
+        
   }
 
   listenerTime(){
@@ -69,29 +74,34 @@ export class AlternativeTeacherComponent implements OnInit{
     if( this.indicePregunta < this.listaPreguntas.length){
 
       this.preguntaSelected = this.listaPreguntas[this.indicePregunta];
+      
+      if(this.preguntaSelected){
 
-      for (let index = 0; index < 4; index++) {
-        try{
-          var answer = this.preguntaSelected.listaRespuestas[index];
-          if(answer.respuesta){
-            listaRespuesta.push(answer);
+        for (let index = 0; index < 4; index++) {
+          try{
+            var answer = this.preguntaSelected.listaRespuestas[index];
+            if(answer.respuesta){
+              listaRespuesta.push(answer);
+            }
           }
+          catch (ex) {}
         }
-        catch (ex) {}
-      }
 
-      this.preguntaSelected.listaRespuestas = listaRespuesta;
+        this.preguntaSelected.listaRespuestas = listaRespuesta;
 
-      this.activityRealService.listenerParticipantes(this.codigoActividad, this.preguntaSelected.$key)
-        .snapshotChanges().subscribe(item => {
-          this.listaParticipants = [];
-          item.forEach(element => {
-            var x = element.payload.toJSON()
-            x["$key"] = element.key;
-            this.listaParticipants.push(x as Usuario);
+        this.activityRealService.listenerParticipantes(this.codigoActividad, this.preguntaSelected.$key)
+          .snapshotChanges().subscribe(item => {
+            this.listaParticipants = [];
+            item.forEach(element => {
+              var x = element.payload.toJSON()
+              x["$key"] = element.key;
+              this.listaParticipants.push(x as Usuario);
+            });
+            this.participantes = this.listaParticipants.length;
           });
-          this.participantes = this.listaParticipants.length;
-        });
+      }else {
+        this.actividadTerminada();
+      }
     }else {
       this.actividadTerminada();
     }
@@ -100,8 +110,6 @@ export class AlternativeTeacherComponent implements OnInit{
   actividadTerminada(){
     alert('Finalizo las preguntas');
     
-
-    //obtengo los participantes...
   }
 
   startCountDown(){
@@ -129,7 +137,7 @@ export class AlternativeTeacherComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       
       if(result == 'Go'){
-        this.activityRealService.registraPreguntaActiva(this.codigoActividad, this.preguntaSelected.$key);
+        this.activityRealService.registraPreguntaActiva(this.codigoActividad, this.preguntaSelected.$key, this.indicePregunta);
         this.inicializarCuenta();
       }
     });

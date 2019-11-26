@@ -30,7 +30,9 @@ export class CreateQuizComponent{
   activity          : Activity  = null;
 
   step              = 0;
+  messageErrorTema  = false;
   question          = '' ;
+
 
   constructor( private  dialog:  MatDialog ) {
     this.activity = new Activity();
@@ -87,7 +89,6 @@ export class CreateQuizComponent{
     
     this.setStep(1);
     this.clearInputs();
-    
   }
 
   clearInputs(){

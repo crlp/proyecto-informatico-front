@@ -57,5 +57,22 @@ export class UsuarioService {
   }
 
     
+  insertarUsuarioMasivo(listaUsuario: string, colegioId: string, salonSeccion: string): Observable<HttpEvent<{}>> {  
+    let url = '';
+    
+    if(salonSeccion){
+      url = ParametroUtil.URL_BASE + '/users/school/' + colegioId + '/' + salonSeccion
+    }else {
+      url = ParametroUtil.URL_BASE + '/users/school/' + colegioId + '/' + 0
+    }
+   
+    const req = new HttpRequest(ParametroUtil.POST,  url, listaUsuario, {
+      headers : Metodo.getHeadersInvocationPost(),
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
 
 }

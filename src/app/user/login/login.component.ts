@@ -14,19 +14,26 @@ import { ParametroUtil } from 'src/app/util/parametroUtil';
 })
 export class LoginComponent {
 
+  mensajeErrorEnglish = MensajeUtil.EMPTY;
   mensajeError = MensajeUtil.EMPTY;
-  procesando = 0;
-  respuesta;
+  msgError     = 0;
+  respuesta     : any;
 
   constructor(private router: Router, private usuarioService: UsuarioService, private spinner: NgxSpinnerService) {
   }
 
   login(form: NgForm) {
-    if (form.value.username === MensajeUtil.EMPTY) {
+    if (form.value.username === MensajeUtil.EMPTY && form.value.password === MensajeUtil.EMPTY){
+      this.mensajeError = MensajeUtil.FIELD_EMPTY;
+      this.mensajeErrorEnglish = MensajeUtil.FIELD_EMPTY_EN;
+      this.setProcesando(2);
+    }else if (form.value.username === MensajeUtil.EMPTY) {
       this.mensajeError = MensajeUtil.CODIGO_USUARIO_EMPTY;
+      this.mensajeErrorEnglish = MensajeUtil.CODIGO_USUARIO_EMPTY_EN;
       this.setProcesando(2);
     }else if (form.value.password === MensajeUtil.EMPTY) {
-      this.mensajeError = MensajeUtil.CONTRASENA_EMPTY
+      this.mensajeError = MensajeUtil.CONTRASENA_EMPTY;
+      this.mensajeErrorEnglish = MensajeUtil.CONTRASENA_EMPTY_EN;
       this.setProcesando(2);
     }else {
       this.cargando(true)
@@ -57,8 +64,8 @@ export class LoginComponent {
     else { this.spinner.hide(); }
   }
 
-  setProcesando(estado){
-    this.procesando = estado;
+  setProcesando(estado: number){
+    this.msgError = estado;
   }
 
 }

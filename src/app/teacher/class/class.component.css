@@ -5,3 +5,36 @@ th{
 tr{
     text-align: center;
 }
+
+.redondea { 
+    padding: 20px;
+    background-color: #eae4e4;
+    border-radius: 5px;
+    border:1px solid #000;
+}
+
+.text-login-center{
+    padding: 8px;
+    background-color: #b66dc3;
+}
+.mensaje-section{
+    color: #eae4e4;
+}
+
+.info-box
+{
+     -moz-border-radius: 6px;
+     -webkit-border-radius: 6px;
+     background-color: #f0f7fb;
+     border: solid 1px #3498db;
+     border-radius: 6px;
+     line-height: 18px;
+     overflow: hidden;
+     padding: 12px;
+     margin-bottom: 8px;
+}
+
+.block
+{
+    display:inline;
+}

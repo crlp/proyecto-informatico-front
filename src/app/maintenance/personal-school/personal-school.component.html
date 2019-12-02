@@ -1,39 +1,43 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header card-header-primary">
-        <h4 class="card-title">Maintenance - School/Personal/Classroom</h4>
-      </div>
-      <div class="card-body">
-        <app-rbt-student-teacher (childEvent)="recepcionVista($event)" #rbtStudenTeacher></app-rbt-student-teacher>
-        <div *ngIf="_flagMuestra==0">
-          <app-search-school (childEvent)="recepcionSchool($event)" #searchSchool style="margin-top: 8px">
-          </app-search-school>
-          <app-assign-rooms (childEvent)="recepcionRooms($event)" #assignRooms style="margin-top: 8px">
-          </app-assign-rooms>
-          <app-import-student (childEvent)="recepcionClassroom($event)" #importStudent style="margin-top: 8px">
-          </app-import-student>
-        </div>
-        <div *ngIf="_flagMuestra==1">
-          <app-search-school (childEvent)="recepcionSchool($event)" #searchSchool style="margin-top: 8px">
-          </app-search-school>
-          <app-import-student (childEvent)="recepcionClassroom($event)" #importStudent style="margin-top: 8px">
-          </app-import-student>
-        </div>
-
-        <div *ngIf="_flagMuestra==2"> 
-          <app-search-school (childEvent)="recepcionSchoolDinamic($event)" #searchSchool style="margin-top: 8px">
-          </app-search-school>
-          <app-search-teacher (childEvent)="recepcionTeacher($event)" [filteredOptions] = "filteredOptions"></app-search-teacher>
-          <app-multichck-rooms  #multichckRooms (childEvent)="recepcionSalones($event)"></app-multichck-rooms>
-        </div>
-
-
-        <div *ngIf="_flagMuestra != -1">
-          <button type="button" class="btn btn-primary pull-left" (click)="confirmar()"
-            style="margin-top: 16px">Confirm</button>
-        </div>
-      </div>
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h4 class="card-title">Maintenance - School/Personal/Classroom</h4>
+  </div>
+  <div class="card-body">
+    <button type="button" style="width:30%" class="btn btn-primary pull-left" (click)="verUsersImported()">See users
+      imported</button>
+      <br>
+    <div>
+      <app-rbt-student-teacher style="width:70%" (childEvent)="recepcionVista($event)" #rbtStudenTeacher>
+      </app-rbt-student-teacher>
     </div>
+    <div *ngIf="_flagMuestra==0">
+      <app-search-school (childEvent)="recepcionSchool($event)" #searchSchool style="margin-top: 8px">
+      </app-search-school>
+      <app-assign-rooms (childEvent)="recepcionRooms($event)" #assignRooms style="margin-top: 8px">
+      </app-assign-rooms>
+      <app-import-student (childEvent)="recepcionClassroom($event)" #importStudent style="margin-top: 8px">
+      </app-import-student>
+    </div>
+    <div *ngIf="_flagMuestra==1">
+      <app-search-school (childEvent)="recepcionSchool($event)" #searchSchool style="margin-top: 8px">
+      </app-search-school>
+      <app-import-student (childEvent)="recepcionClassroom($event)" #importStudent style="margin-top: 8px">
+      </app-import-student>
+    </div>
+
+    <div *ngIf="_flagMuestra==2">
+      <app-search-school (childEvent)="recepcionSchoolDinamic($event)" #searchSchool style="margin-top: 8px">
+      </app-search-school>
+      <app-search-teacher (childEvent)="recepcionTeacher($event)" [filteredOptions]="filteredOptions">
+      </app-search-teacher>
+      <app-multichck-rooms #multichckRooms (childEvent)="recepcionSalones($event)"></app-multichck-rooms>
+    </div>
+
+
+    <div *ngIf="_flagMuestra != -1">
+      <button type="button" class="btn btn-primary pull-left" (click)="confirmar()"
+        style="margin-top: 16px">Confirm</button>
+    </div>
+
   </div>
 </div>

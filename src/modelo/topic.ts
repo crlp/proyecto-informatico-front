@@ -1,4 +1,6 @@
 import { Parametro } from './param';
+import { SectionClass } from './section-class';
+import { School } from './school';
 
 export class Topic {
 
@@ -6,6 +8,8 @@ export class Topic {
     titulo: string;
     descripcion: string;
     estado: Parametro;
+    listaTemaSeccion: SectionClass[] = [];
+    colegio: School;
     
 
 }

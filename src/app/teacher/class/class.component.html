@@ -5,103 +5,72 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title ">Make your class!</h4>
-            <p class="card-category"> In this section you can make your class. You only need to selectd the date.</p>
+            <p class="card-category"> In this section you can make your class.</p>
           </div>
           <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary pull-right" (click)="crearTema()">
+                    <mat-icon>class</mat-icon>
+                    Create topic
+                  </button>
 
-            <div class="row">
-              <div class="col-md-12">
-                <button type="button" class="btn btn-warning pull-right" (click)="pintar()">
-                  <mat-icon>chrome_reader_mode</mat-icon>
-                  Create syllabus
-                </button>
-                <button type="button" class="btn btn-primary pull-right" (click)="crearTema()">
-                  <mat-icon>class</mat-icon>
-                  Create topic
-                </button>
-
+                </div>
               </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-md-12">
-                <mat-form-field style="width: 100%">
-                  <input matInput placeholder="Please write the subject title! ">
-                </mat-form-field>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field style="width: 100%">
+                    <input [(ngModel)]="topic.titulo" name="titulo"  matInput placeholder="Please write the subject title! ">
+                  </mat-form-field>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <mat-form-field style="width: 100%">
-                  <input matInput placeholder="Please write the subject description! ">
-                </mat-form-field>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field style="width: 100%">
+                    <input [(ngModel)]="topic.descripcion" name="descripcion" matInput placeholder="Please write the subject description! ">
+                  </mat-form-field>
+                </div>
               </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-md-9" style="padding-top: 16px">
-                Please write your content
+              <br>
+              <div class="row" *ngFor="let item of listSectionClass; let i = index" class="info-box">
+                <div class="col-md-12 block">
+                  <mat-label>{{item.titulo}}</mat-label>
+                </div>
+                <div class="col-md-12 block">
+                  <button type="button" class="btn pull-right" (click)="verHtml(item)">
+                    See Detail
+                  </button>
+                </div>
               </div>
-
-              <div class="col-md-3">
-                <button type="button" class="btn btn-warning pull-right" (click)="pintar()">
-                  <mat-icon>add_box</mat-icon>
-                  Add Section
-                </button>
+              <div class="redondea">
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field style="width: 100%">
+                      <input [(ngModel)]="sectionClass.titulo" name="tituloSec" matInput
+                        placeholder="Please write a possible title section! ">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9" style="padding-top: 16px">
+                    Please write your content
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <ckeditor [(ngModel)]="sectionClass.contenidoHtml"  name="contenidoHtml" [editor]="editor"></ckeditor>
+                  </div>
+                  <div class="col-md-12">
+                    <button type="button" class="btn btn-warning pull-right" (click)="addSectionInMemory()">
+                      <mat-icon>add_box</mat-icon>
+                      Add Section
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <ckeditor [(ngModel)]="modelo" [editor]="editor"></ckeditor>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <button type="button" class="btn btn-primary pull-right" (click)="crearSylabuss()">
-                  <mat-icon>save</mat-icon>
-                  Save
-                </button>
-              </div>
-            </div>
-            <!--
-              <app-search-topic (childEvent)="recepcionTema($event)" #searchTopic></app-search-topic>
-              
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>
-                    Nro Activity
-                  </th>
-                  <th>
-                    Code Session
-                  </th>
-                  <th>
-                    Teacher
-                  </th>
-                  <th>
-                    Play
-                  </th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let activity of activities ; let i = index">
-                    <td>
-                       #{{i + 1}}
-                    </td>
-                    <td>
-                       <strong>{{activity.codigoAleatorio}} </strong>
-                    </td>
-                    <td>
-                        {{activity.profesor.nombres + " " + activity.profesor.apellidos}}
-                    </td>
-                    <td class="text-primary">
-                        <button mat-button (click)= "showOwnActivities(activity)" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">play_circle_filled</i>
-                        </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>-->
+            </form>
           </div>
         </div>
       </div>

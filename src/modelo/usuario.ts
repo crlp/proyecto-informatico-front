@@ -1,4 +1,5 @@
 import { Parametro } from './param';
+import { School } from './school';
 
 export class Usuario {
 
@@ -18,6 +19,7 @@ export class Usuario {
     gradoInstruccion: string;
     foto: string;
     codigoRespuesta : string;
+    colegio: School;
     
 
 }

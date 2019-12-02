@@ -1,0 +1,10 @@
+body{
+  width: 80% !important;
+}
+.info {
+  background-color: #ddd;
+  border-color: #aaa; 
+}
+.card {
+  width: 100% !important;
+}

@@ -43,11 +43,11 @@ export class SearchTopicComponent implements OnInit {
   }
 
   listarTemas(){
-    this.topicService.listaTemas().subscribe(datos =>{
+/*  this.topicService.listaTemas().subscribe(datos =>{
       if (datos instanceof HttpResponse) {
         this.filteredOptions=JSON.parse(JSON.stringify(datos.body));
       }
-    })
+    })*/
   }
 
   confirmarTema (){

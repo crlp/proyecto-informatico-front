@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatExpansionModule, MatInputModule, MatIconModule, 
-  MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatListModule, MAT_DIALOG_DATA, MatDialogRef, MatTableModule, MatSelectModule, MatRadioModule, MatCheckboxModule } from '@angular/material';
+  MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatListModule, MAT_DIALOG_DATA, MatDialogRef, MatTableModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatSelect } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule }  from 'ngx-spinner';
 
@@ -47,7 +47,9 @@ import { AssignRoomsComponent } from './school/assign-rooms/assign-rooms.compone
 import { RbtStudentTeacherComponent } from './school/rbt-student-teacher/rbt-student-teacher.component';
 import { SearchTeacherComponent } from './school/search-teacher/search-teacher.component';
 import { MultichckRoomsComponent } from './school/multichck-rooms/multichck-rooms.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular'; 
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { DetailSectionClassComponent } from './teacher/class/detail-section-class/detail-section-class.component';
+import { ModalSeeUsersComponent } from './school/modal-see-users/modal-see-users.component'; 
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     RbtStudentTeacherComponent,
     SearchTeacherComponent,
     MultichckRoomsComponent,
+    DetailSectionClassComponent,
+    ModalSeeUsersComponent,
     ],
   imports: [
     BrowserModule,
@@ -93,6 +97,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatSelectModule,
     NgbModalModule,
     MatFormFieldModule,
     MatAutocompleteModule,
@@ -108,7 +113,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
   ],
   providers: [UsuarioService, SchoolService, ActivityService, LoginGuard,NoLoginGuard , NgbActiveModal, TopicService, CreateQuizComponent, NgxSpinnerModule, { provide: MAT_DIALOG_DATA, useValue: {} },  { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [ModalConfirmationComponent, ModalActivityDetailComponent, OwnActivitiesByTopicComponent, ResultQuestionModalComponent, ListSchoolComponent]
+  entryComponents: [ModalConfirmationComponent, ModalActivityDetailComponent, OwnActivitiesByTopicComponent, ResultQuestionModalComponent, ListSchoolComponent, DetailSectionClassComponent, ModalSeeUsersComponent]
   
 })
 export class AppModule { }

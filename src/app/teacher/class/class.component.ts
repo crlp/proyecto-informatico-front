@@ -7,6 +7,12 @@ import { HttpResponse } from '@angular/common/http';
 import { Activity } from 'src/modelo/activity';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { SectionClass } from 'src/modelo/section-class';
+import { DetailSectionClassComponent } from './detail-section-class/detail-section-class.component';
+import { Usuario } from 'src/modelo/usuario';
+import { ParametroUtil } from 'src/app/util/parametroUtil';
+import { TopicService } from 'src/services/topic.service';
+import { Metodo } from 'src/app/util/metodo';
 
 @Component({
   selector: 'app-class',
@@ -15,34 +21,42 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ClassComponent implements OnInit{
 
-  
-  topic            : Topic      = null ;
+  topic            : Topic      = new Topic() ;
   activitySelected : Activity   = null;
-
   activities       : Activity[] = [] ;
+  usuario          : Usuario
+
+  sectionClass = new SectionClass();
+  listSectionClass : SectionClass[] = [] ;
+
   editor = ClassicEditor;
-  modelo :string = '';
 
-  constructor(public dialog: MatDialog,private activityService : ActivityService, private spinner : NgxSpinnerService) { }
-
-  ngOnInit(): void {
-   
+  constructor(public dialog: MatDialog,private topicService: TopicService, private activityService : ActivityService, private spinner : NgxSpinnerService) { 
+    this.usuario  = JSON.parse(localStorage.getItem(ParametroUtil.USER_STORAGE));
   }
 
-  showOwnActivities(activity : Activity){
-    this.activitySelected = activity;
+  ngOnInit(): void { }
+
+  crearTema() {
+    this.topic.colegio = this.usuario.colegio;
+    this.topic.listaTemaSeccion = this.listSectionClass;
+    this.topicService.insertaTema(this.topic).subscribe(datos =>{
+      if (datos instanceof HttpResponse) {
+        this.topic = new Topic();
+        Metodo.DIALOG_MESSAGE_SUCCESS('Topic inserted!!!')
+      }
+    })
+  }
+
+  verHtml(sectionClass: SectionClass){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.data = { topic : this.topic, activity : this.activitySelected }
-    const dialogRef =  this.dialog.open(OwnActivitiesByTopicComponent, dialogConfig);
+    dialogConfig.data = sectionClass;
+    const dialogRef =  this.dialog.open(DetailSectionClassComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-    });
-  }
 
-  recepcionTema (topic : Topic){
-    this.topic = topic;
-    this.getActivitiesByUser();
+    });
   }
 
   getActivitiesByUser(){
@@ -55,9 +69,9 @@ export class ClassComponent implements OnInit{
     })
   }
   
-  pintar(){
-    console.log(this.modelo)
-  
+  addSectionInMemory(){
+    this.listSectionClass.push(this.sectionClass);
+    this.sectionClass = new SectionClass();
   }
 
 }

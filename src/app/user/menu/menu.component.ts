@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
   showProfesor = false
   showAdministrador = false
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { 
+  constructor(private usuarioService: UsuarioService) { 
     this.usuario = new Usuario();
   }
 

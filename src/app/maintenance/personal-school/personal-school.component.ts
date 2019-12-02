@@ -9,6 +9,8 @@ import { SchoolService } from 'src/services/school.service';
 import { Usuario } from 'src/modelo/usuario';
 import { MultichckRoomsComponent } from 'src/app/school/multichck-rooms/multichck-rooms.component';
 import { TeacherClassrooms } from 'src/modelo/teacher-classrooms';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { ModalSeeUsersComponent } from 'src/app/school/modal-see-users/modal-see-users.component';
 
 @Component({
   selector: 'app-personal-school',
@@ -34,7 +36,7 @@ export class PersonalSchoolComponent implements AfterViewInit{
 
   
   constructor(private _usuarioService : UsuarioService, 
-    private _schoolService: SchoolService,  private spinnerLoading : NgxSpinnerService) { }
+    private _schoolService: SchoolService,  private spinnerLoading : NgxSpinnerService,  private dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
   }
@@ -58,6 +60,16 @@ export class PersonalSchoolComponent implements AfterViewInit{
   recepcionSchoolDinamic(school : School){
     this._schoolSelected = school;
     this.obtenerTeacherBySchool();
+  }
+
+  verUsersImported(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = false;
+    const dialogRef = this.dialog.open(ModalSeeUsersComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+     
+    });
   }
 
   obtenerTeacherBySchool() {

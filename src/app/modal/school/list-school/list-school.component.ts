@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { School } from 'src/modelo/school';
-import { SchoolService } from 'src/services/school.service';
+import { School } from 'src/shared/modelo/school';
+import { SchoolService } from 'src/shared/services/school.service';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({

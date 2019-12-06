@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Question } from "src/modelo/question";
-import { Answer } from "src/modelo/answer";
+import { Question } from "src/shared/modelo/question";
+import { Answer } from "src/shared/modelo/answer";
 import { NgxSpinnerService } from "ngx-spinner";
-import { ActivityRealService } from "src/services/activity-real.service";
+import { ActivityRealService } from "src/shared/services/activity-real.service";
 import { ParametroUtil } from "src/app/util/parametroUtil";
-import { Usuario } from "src/modelo/usuario";
+import { Usuario } from "src/shared/modelo/usuario";
 import { interval } from "rxjs";
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/services/usuario.service';
-import { Usuario } from 'src/modelo/usuario';
+import { UsuarioService } from 'src/shared/services/usuario.service';
+import { Usuario } from 'src/shared/modelo/usuario';
 import { HttpResponse } from '@angular/common/http';
 import { Metodo } from 'src/app/util/metodo';
 import { ParametroUtil } from 'src/app/util/parametroUtil';

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output} from '@angular/core';
-import { Answer } from 'src/modelo/answer';
-import { Parametro } from 'src/modelo/param';
+import { Answer } from 'src/shared/modelo/answer';
+import { Parametro } from 'src/shared/modelo/param';
 import { Metodo } from 'src/app/util/metodo';
 import { MatButton } from '@angular/material';
 

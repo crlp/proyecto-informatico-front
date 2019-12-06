@@ -1,14 +1,14 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { School } from 'src/modelo/school';
-import { Parametro } from 'src/modelo/param';
-import { UsuarioService } from 'src/services/usuario.service';
+import { School } from 'src/shared/modelo/school';
+import { Parametro } from 'src/shared/modelo/param';
+import { UsuarioService } from 'src/shared/services/usuario.service';
 import { HttpResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Metodo } from 'src/app/util/metodo';
-import { SchoolService } from 'src/services/school.service';
-import { Usuario } from 'src/modelo/usuario';
+import { SchoolService } from 'src/shared/services/school.service';
+import { Usuario } from 'src/shared/modelo/usuario';
 import { MultichckRoomsComponent } from 'src/app/school/multichck-rooms/multichck-rooms.component';
-import { TeacherClassrooms } from 'src/modelo/teacher-classrooms';
+import { TeacherClassrooms } from 'src/shared/modelo/teacher-classrooms';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ModalSeeUsersComponent } from 'src/app/school/modal-see-users/modal-see-users.component';
 

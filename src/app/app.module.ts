@@ -11,16 +11,16 @@ import { NgxSpinnerModule }  from 'ngx-spinner';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user/login/login.component';
-import { UsuarioService } from 'src/services/usuario.service';
-import { ActivityService } from 'src/services/activity.service';
-import { LoginGuard } from 'src/services/util/login.guard';
-import { NoLoginGuard } from 'src/services/util/no-login.guard';
+import { UsuarioService } from 'src/shared/services/usuario.service';
+import { ActivityService } from 'src/shared/services/activity.service';
+import { LoginGuard } from 'src/shared/services/util/login.guard';
+import { NoLoginGuard } from 'src/shared/services/util/no-login.guard';
 import { ClassComponent } from './teacher/class/class.component';
 import { platformBrowserDynamic } from'@angular/platform-browser-dynamic';
 import { CreateQuizComponent } from './teacher/activity-teacher/create-quiz/create-quiz.component';
 import { ModalConfirmationComponent } from './modal/activity/modal-confirmation/modal-confirmation.component';
 import { NgbModalModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TopicService } from 'src/services/topic.service';
+import { TopicService } from 'src/shared/services/topic.service';
 import { SearchTopicComponent } from './topic/search-topic/search-topic.component';
 import { QuestionOfTopicComponent } from './teacher/activity-teacher/question-of-topic/question-of-topic.component';
 import { AnswerOfQuestionTeacherComponent } from './teacher/activity-teacher/answer-of-question-teacher/answer-of-question-teacher.component';
@@ -41,7 +41,7 @@ import { SchoolComponent } from './maintenance/school/school.component'
 import { ListSchoolComponent } from './modal/school/list-school/list-school.component';
 import { PersonalSchoolComponent } from './maintenance/personal-school/personal-school.component';
 import { SearchSchoolComponent } from './school/search-school/search-school.component';
-import { SchoolService } from 'src/services/school.service';
+import { SchoolService } from 'src/shared/services/school.service';
 import { ImportStudentComponent } from './school/import-student/import-student.component';
 import { AssignRoomsComponent } from './school/assign-rooms/assign-rooms.component';
 import { RbtStudentTeacherComponent } from './school/rbt-student-teacher/rbt-student-teacher.component';
@@ -49,7 +49,9 @@ import { SearchTeacherComponent } from './school/search-teacher/search-teacher.c
 import { MultichckRoomsComponent } from './school/multichck-rooms/multichck-rooms.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { DetailSectionClassComponent } from './teacher/class/detail-section-class/detail-section-class.component';
-import { ModalSeeUsersComponent } from './school/modal-see-users/modal-see-users.component'; 
+import { ModalSeeUsersComponent } from './school/modal-see-users/modal-see-users.component';
+import { MakeClassComponent } from './class/make-class/make-class.component';
+import { ModalActivityRoomsComponent } from './class/modal-activity-rooms/modal-activity-rooms.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { ModalSeeUsersComponent } from './school/modal-see-users/modal-see-users
     MultichckRoomsComponent,
     DetailSectionClassComponent,
     ModalSeeUsersComponent,
+    MakeClassComponent,
+    ModalActivityRoomsComponent,
     ],
   imports: [
     BrowserModule,
@@ -113,7 +117,7 @@ import { ModalSeeUsersComponent } from './school/modal-see-users/modal-see-users
   ],
   providers: [UsuarioService, SchoolService, ActivityService, LoginGuard,NoLoginGuard , NgbActiveModal, TopicService, CreateQuizComponent, NgxSpinnerModule, { provide: MAT_DIALOG_DATA, useValue: {} },  { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [ModalConfirmationComponent, ModalActivityDetailComponent, OwnActivitiesByTopicComponent, ResultQuestionModalComponent, ListSchoolComponent, DetailSectionClassComponent, ModalSeeUsersComponent]
+  entryComponents: [ModalConfirmationComponent, ModalActivityDetailComponent, OwnActivitiesByTopicComponent, ResultQuestionModalComponent, ListSchoolComponent, DetailSectionClassComponent, ModalSeeUsersComponent, ModalActivityRoomsComponent]
   
 })
 export class AppModule { }

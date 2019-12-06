@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Usuario } from 'src/modelo/usuario';
+import { Usuario } from 'src/shared/modelo/usuario';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Metodo } from 'src/app/util/metodo';
 

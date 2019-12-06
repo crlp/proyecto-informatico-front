@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Question } from 'src/modelo/question';
+import { Question } from 'src/shared/modelo/question';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ActivityRealService } from 'src/services/activity-real.service';
-import { Usuario } from 'src/modelo/usuario';
-import { Answer } from 'src/modelo/answer';
+import { ActivityRealService } from 'src/shared/services/activity-real.service';
+import { Usuario } from 'src/shared/modelo/usuario';
+import { Answer } from 'src/shared/modelo/answer';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ResultQuestionModalComponent } from '../result-question-modal/result-question-modal.component';
 import { AlternativeStudentComponent } from '../alternative-student/alternative-student.component';

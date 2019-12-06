@@ -1,8 +1,8 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
-import { School } from 'src/modelo/school';
+import { School } from 'src/shared/modelo/school';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { SchoolService } from 'src/services/school.service';
+import { SchoolService } from 'src/shared/services/school.service';
 import { HttpResponse } from '@angular/common/http';
 import { Metodo } from 'src/app/util/metodo';
 

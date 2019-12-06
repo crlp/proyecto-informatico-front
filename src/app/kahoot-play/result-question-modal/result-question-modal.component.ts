@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import * as CanvasJS from '../../../lib/canvasjs.min';
-import { ActivityRealService } from 'src/services/activity-real.service';
-import { Usuario } from 'src/modelo/usuario';
+import { ActivityRealService } from 'src/shared/services/activity-real.service';
+import { Usuario } from 'src/shared/modelo/usuario';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Question } from 'src/modelo/question';
+import { Question } from 'src/shared/modelo/question';
 
 @Component({
   selector: 'app-result-question-modal',

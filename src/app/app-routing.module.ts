@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './user/home/home.component';
 import { AppComponent } from './app.component';
-import { LoginGuard } from 'src/services/util/login.guard';
+import { LoginGuard } from 'src/shared/services/util/login.guard';
 import { DashboardComponent } from './student/dashboard/dashboard.component';
 import { MenuComponent } from './user/menu/menu.component';
 import { ClassComponent } from './teacher/class/class.component';
@@ -15,6 +15,7 @@ import { AlternativeTeacherComponent } from './kahoot-play/alternative-teacher/a
 import { AlternativeStudentComponent } from './kahoot-play/alternative-student/alternative-student.component';
 import { SchoolComponent } from './maintenance/school/school.component';
 import { PersonalSchoolComponent } from './maintenance/personal-school/personal-school.component';
+import { MakeClassComponent } from './class/make-class/make-class.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -31,7 +32,8 @@ const routes: Routes = [
     { path: 'create-quiz', component: CreateQuizComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
     { path: 'activity-list', component: ActivitiesListComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
     { path: 'school', component: SchoolComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
-    { path: 'personal-school', component: PersonalSchoolComponent, outlet: 'menulateral', canActivate:[LoginGuard] }
+    { path: 'personal-school', component: PersonalSchoolComponent, outlet: 'menulateral', canActivate:[LoginGuard] },
+    { path: 'make-class', component: MakeClassComponent, outlet: 'menulateral', canActivate:[LoginGuard] }
   ]}
 ];
 

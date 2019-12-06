@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { SectionClass } from 'src/modelo/section-class';
+import { SectionClass } from 'src/shared/modelo/section-class';
 
 @Component({
   selector: 'app-detail-section-class',

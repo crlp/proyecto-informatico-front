@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig} from  '@angular/material';
 
 import { ModalConfirmationComponent } from '../../../modal/activity/modal-confirmation/modal-confirmation.component';
-import { Activity } from 'src/modelo/activity';
-import { Question } from 'src/modelo/question';
-import { Usuario } from 'src/modelo/usuario';
-import { Parametro } from 'src/modelo/param';
-import { Answer } from 'src/modelo/answer';
-import { Topic } from 'src/modelo/topic';
+import { Activity } from 'src/shared/modelo/activity';
+import { Question } from 'src/shared/modelo/question';
+import { Usuario } from 'src/shared/modelo/usuario';
+import { Parametro } from 'src/shared/modelo/param';
+import { Answer } from 'src/shared/modelo/answer';
+import { Topic } from 'src/shared/modelo/topic';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
 import { ParametroUtil } from 'src/app/util/parametroUtil';

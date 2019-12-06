@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
-import { ActivityReal } from 'src/modelo/firebase/activity-real';
-import { Usuario } from 'src/modelo/usuario';
-import { Activity } from 'src/modelo/activity';
-import { Participant } from 'src/modelo/firebase/participant';
-import { Question } from 'src/modelo/question';
+import { ActivityReal } from 'src/shared/modelo/firebase/activity-real';
+import { Usuario } from 'src/shared/modelo/usuario';
+import { Activity } from 'src/shared/modelo/activity';
+import { Participant } from 'src/shared/modelo/firebase/participant';
+import { Question } from 'src/shared/modelo/question';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
-import { Answer } from 'src/modelo/answer';
+import { Answer } from 'src/shared/modelo/answer';
 
 @Injectable({
   providedIn: 'root'

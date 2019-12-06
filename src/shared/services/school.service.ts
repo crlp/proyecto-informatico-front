@@ -3,8 +3,8 @@ import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Metodo } from 'src/app/util/metodo';
-import { School } from 'src/modelo/school';
-import { TeacherClassrooms } from 'src/modelo/teacher-classrooms';
+import { School } from 'src/shared/modelo/school';
+import { TeacherClassrooms } from 'src/shared/modelo/teacher-classrooms';
 
 @Injectable()
 export class SchoolService {
@@ -74,6 +74,13 @@ export class SchoolService {
     });
     return this.http.request(req);
   }
+
+  listUsuarioPorColegioYPerfil(codigoPerfil: string, codigoColegio: string, aula: string): Observable<HttpEvent<{}>> {
+    let url = ParametroUtil.URL_BASE +'/user/profile/' + codigoPerfil + '/' + codigoColegio+ '/' + aula
+    const req = new HttpRequest(ParametroUtil.GET, url, Metodo.INIT);
+    return this.http.request(req);
+  }
+  
   
     
 

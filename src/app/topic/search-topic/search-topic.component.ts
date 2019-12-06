@@ -1,9 +1,11 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
-import { Topic } from 'src/modelo/topic';
-import { TopicService } from 'src/services/topic.service';
+import { Topic } from 'src/shared/modelo/topic';
+import { TopicService } from 'src/shared/services/topic.service';
 import { HttpResponse } from '@angular/common/http';
+import { ParametroUtil } from 'src/app/util/parametroUtil';
+import { Usuario } from 'src/shared/modelo/usuario';
 
 @Component({
   selector: 'app-search-topic',
@@ -17,6 +19,7 @@ export class SearchTopicComponent implements OnInit {
   myControl       : FormControl   = new FormControl();
   filteredOptions : Observable< Array< Topic > >;
 
+  usuario = new Usuario();
 
   @Output() 
   childEvent =  new EventEmitter
@@ -43,11 +46,12 @@ export class SearchTopicComponent implements OnInit {
   }
 
   listarTemas(){
-/*  this.topicService.listaTemas().subscribe(datos =>{
+    this.usuario  = JSON.parse(localStorage.getItem(ParametroUtil.USER_STORAGE));
+   this.topicService.listaTemas(this.usuario.colegio.codigo).subscribe(datos =>{
       if (datos instanceof HttpResponse) {
         this.filteredOptions=JSON.parse(JSON.stringify(datos.body));
       }
-    })*/
+    })
   }
 
   confirmarTema (){

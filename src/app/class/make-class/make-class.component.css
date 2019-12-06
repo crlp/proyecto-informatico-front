@@ -1,0 +1,12 @@
+.info-box-class{
+    border: 0;
+    border-radius: 3px;
+    position: relative;
+    padding: 20px 15px;
+    line-height: 20px;
+    background-color: #66bf6a;
+    color: #ffffff;
+    margin-top:16px;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4)
+
+}

@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Parametro } from 'src/modelo/param';
+import { Parametro } from 'src/shared/modelo/param';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { UsuarioService } from 'src/services/usuario.service';
+import { UsuarioService } from 'src/shared/services/usuario.service';
 import { HttpResponse } from '@angular/common/http';
 import { Metodo } from 'src/app/util/metodo';
 import { ParametroUtil } from 'src/app/util/parametroUtil';

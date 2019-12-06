@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Make your class</h4>
+                <p class="card-category">Realiza tu clase</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <app-search-topic (childEvent)="recepcionTema($event)" #searchTopic></app-search-topic>
+                    </div>
+                    <div class="col-sm-6" *ngIf='listaActivity.length>0'>
+                        <button type="button" class="btn btn-primary pull-right"
+                            (click)="comenzarJuegoTiempoReal()">Start activity en time real</button>
+                    </div>
+                </div>
+                <div *ngFor="let option of listaSeccion; let i = index" class="info-box-class" role="alert">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div>
+                                <strong>{{option.titulo}}</strong>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3" style="text-align: end;">
+                            <div>
+                                <mat-icon (click)='verHtml(option)'>search</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

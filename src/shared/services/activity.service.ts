@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Activity } from 'src/modelo/activity';
+import { Activity } from 'src/shared/modelo/activity';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Metodo } from 'src/app/util/metodo';
-import { ActivityReal } from 'src/modelo/firebase/activity-real';
+import { ActivityReal } from 'src/shared/modelo/firebase/activity-real';
 
 @Injectable()
 export class ActivityService {
@@ -23,6 +23,14 @@ export class ActivityService {
     return this.http.request(req);
   }
 
+
+  listaActividadesByTema(codigoTema): Observable<HttpEvent<{}>> {
+    let url = ParametroUtil.URL_BASE + '/activity/topic/' + codigoTema;
+    const req = new HttpRequest(ParametroUtil.GET, url ,Metodo.INIT);
+    return this.http.request(req);
+  }
+
+  
   listaActivitiesPropiasEstudiante(codigoAula): Observable<HttpEvent<{}>> {
     let url = ParametroUtil.URL_BASE + "/activity/room/" + codigoAula
     const req = new HttpRequest(ParametroUtil.GET, url ,Metodo.INIT);

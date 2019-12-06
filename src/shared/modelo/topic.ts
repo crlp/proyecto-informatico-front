@@ -10,6 +10,7 @@ export class Topic {
     estado: Parametro;
     listaTemaSeccion: SectionClass[] = [];
     colegio: School;
+    codisgo:string;
     
 
 }

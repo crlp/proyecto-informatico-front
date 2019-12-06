@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/services/usuario.service';
+import { UsuarioService } from 'src/shared/services/usuario.service';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/modelo/usuario';
+import { Usuario } from 'src/shared/modelo/usuario';
 import { HttpResponse } from '@angular/common/http';
-import { Parametro } from 'src/modelo/param';
+import { Parametro } from 'src/shared/modelo/param';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Metodo } from 'src/app/util/metodo';
 

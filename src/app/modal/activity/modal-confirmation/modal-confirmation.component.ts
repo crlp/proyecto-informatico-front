@@ -1,7 +1,7 @@
 import { Component, OnInit,  Inject, Injectable } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material';
-import { ActivityService } from 'src/services/activity.service';
-import { Activity } from 'src/modelo/activity';
+import { ActivityService } from 'src/shared/services/activity.service';
+import { Activity } from 'src/shared/modelo/activity';
 import { HttpResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Metodo } from 'src/app/util/metodo';

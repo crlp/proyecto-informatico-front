@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/modelo/usuario';
-import { ActivityRealService } from 'src/services/activity-real.service';
-import { ActivityReal } from 'src/modelo/firebase/activity-real';
-import { Participant } from 'src/modelo/firebase/participant';
+import { Usuario } from 'src/shared/modelo/usuario';
+import { ActivityRealService } from 'src/shared/services/activity-real.service';
+import { ActivityReal } from 'src/shared/modelo/firebase/activity-real';
+import { Participant } from 'src/shared/modelo/firebase/participant';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ActivityService } from 'src/services/activity.service';
+import { ActivityService } from 'src/shared/services/activity.service';
 import { HttpResponse } from '@angular/common/http';
-import { Question } from 'src/modelo/question';
+import { Question } from 'src/shared/modelo/question';
 import { Metodo } from 'src/app/util/metodo';
 @Component({
   selector: 'app-participants-active',

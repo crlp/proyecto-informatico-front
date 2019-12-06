@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { Usuario } from 'src/modelo/usuario';
+import { Usuario } from 'src/shared/modelo/usuario';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { SchoolService } from 'src/services/school.service';
+import { SchoolService } from 'src/shared/services/school.service';
 
 @Component({
   selector: 'app-search-teacher',

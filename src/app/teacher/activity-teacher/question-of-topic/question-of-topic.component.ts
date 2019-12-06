@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Activity } from 'src/modelo/activity';
-import { Question } from 'src/modelo/question';
+import { Activity } from 'src/shared/modelo/activity';
+import { Question } from 'src/shared/modelo/question';
 import { MatDialog } from '@angular/material';
 import { ModalActivityDetailComponent } from '../../../modal/activity/modal-activity-detail/modal-activity-detail.component';
 

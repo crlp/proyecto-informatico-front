@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/modelo/usuario';
-import { ActivityService } from 'src/services/activity.service';
+import { Usuario } from 'src/shared/modelo/usuario';
+import { ActivityService } from 'src/shared/services/activity.service';
 import { HttpResponse } from '@angular/common/http';
-import { Activity } from 'src/modelo/activity';
+import { Activity } from 'src/shared/modelo/activity';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ActivityRealService } from 'src/services/activity-real.service';
-import { ActivityReal } from 'src/modelo/firebase/activity-real';
+import { ActivityRealService } from 'src/shared/services/activity-real.service';
+import { ActivityReal } from 'src/shared/modelo/firebase/activity-real';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Router } from '@angular/router';
-import { Question } from 'src/modelo/question';
+import { Question } from 'src/shared/modelo/question';
 
 @Component({
   selector: 'app-activities-list',

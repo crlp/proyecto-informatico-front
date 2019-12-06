@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-import { Activity } from 'src/modelo/activity';
+import { Activity } from 'src/shared/modelo/activity';
 import { Router } from '@angular/router';
-import { ActivityService } from 'src/services/activity.service';
+import { ActivityService } from 'src/shared/services/activity.service';
 import { HttpResponse } from '@angular/common/http';
-import { Parametro } from 'src/modelo/param';
+import { Parametro } from 'src/shared/modelo/param';
 import { ParametroUtil } from 'src/app/util/parametroUtil';
 import { Metodo } from 'src/app/util/metodo';
 
